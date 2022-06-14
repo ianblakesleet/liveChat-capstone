@@ -7,7 +7,7 @@ Building a chatroom application utilizing websockets(socket.io), where users wil
 - create account/login funcitonality
 - users able to join a chat room
 - users able to create a chat room
-- users able to communicate through live chat(socket.io)
+- users able to live chat
 
 ## **DATABASE CONTAINS**
 
