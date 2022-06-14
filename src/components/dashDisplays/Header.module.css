@@ -1,0 +1,15 @@
+header {
+    height: 90vh;
+    width: 23vh;
+    margin: 5vh 2vh;
+    border-radius: 15px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    text-align: center;
+    height: 8vh;
+    border-radius: 15px;
+    background-color: aqua;
+}
