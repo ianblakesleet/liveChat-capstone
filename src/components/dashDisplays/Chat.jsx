@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { socket } from '../../webSocket'
 
-const Chat = ({socket, username, room}) => {
+const Chat = ({username, room}) => {
     
     const [currentMessage, setCurrentMessage] = useState('')
+    
     const sendMessage = async ()=>{
         if(currentMessage !== ''){
             const messageData = {
