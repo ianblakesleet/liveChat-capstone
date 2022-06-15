@@ -18,7 +18,7 @@ const Chat = ({socket, username, room}) => {
     useEffect(()=>{
         socket.on('receive_message', (data)=>{
         //   setMessDisplay(data.message)
-          console.log(data)
+          console.log(data.message)
         })
       }, [socket])
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styles from './ContentDisplay.module.css'
 import Chat from './Chat'
-import io from 'socket.io-client'
-const socket = io.connect('http://localhost:3001')
+// import io from 'socket.io-client'
+// const socket = io.connect('http://localhost:3001')
+import {socket} from '../../webSocket'
 
 const ContentDisplay = () => {
 
