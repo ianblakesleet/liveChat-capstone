@@ -27,7 +27,11 @@ io.on('connection', socket => {
   //listens to event called "send_message", the socket.broadcast.emit will then send data(message obj from front end) to all users connected to socket. Just wont send it back to the original sender
   socket.on('send_message', data => {
     console.log(data)
-    socket.broadcast.emit('receive_message', data)
+    socket.to(data.room).emit('receive_message', data)
+  })
+  socket.on('join_room', data => {
+    socket.join(data)
+    console.log(`user with id: ${socket.id} joined room: ${data}`)
   })
 })
 

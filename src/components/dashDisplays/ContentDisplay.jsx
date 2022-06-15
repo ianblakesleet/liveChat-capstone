@@ -1,32 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import styles from './ContentDisplay.module.css'
+import Chat from './Chat'
 import io from 'socket.io-client'
 const socket = io.connect('http://localhost:3001')
 
 const ContentDisplay = () => {
-  const [message, setMessage] = useState('')
 
-  const [messDisplay, setMessDisplay] = useState("")
+  const [username, setUsername] = useState('')
+  const [room, setRoom] = useState('')
+
   
-  const sendMessage = ()=>{
-    socket.emit("send_message", {message})
+  const joinRoom = ()=>{
+    if(username !== '' && room !== ''){
+      socket.emit('join_room', room)
+    }
   }
-  
-  useEffect(()=>{
-    socket.on('receive_message', (data)=>{
-      setMessDisplay(data.message)
-    })
-  }, [socket])
-  
-  
   return (
     <main> 
-      <input type="text" placeholder='Message...'
-      onChange={(e)=>setMessage(e.target.value)}
+     
+      <input type="text" placeholder='name...'
+      onChange={(e)=>setUsername(e.target.value)}
       />
-      <button onClick={sendMessage}>send</button> 
+      <input type="text" placeholder='room id...'
+      onChange={(e)=>setRoom(e.target.value)}
+      />
+      {/* <button onClick={sendMessage}>send</button>  */}
+      <button onClick={joinRoom}>send</button> 
       <h1>Message:</h1>
-      {messDisplay}
+      <Chat socket={socket} username={username} room={room}/>
       </main>
   )
 }
