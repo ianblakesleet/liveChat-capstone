@@ -11,9 +11,7 @@ Building a chatroom application utilizing websockets(socket.io), where users wil
 
 ## **DATABASE CONTAINS**
 
-- User info
-- chat rooms
-- chat logs
+![Alt text](./livechat-database-design.PNG)
 
 ### **Pages**
 
