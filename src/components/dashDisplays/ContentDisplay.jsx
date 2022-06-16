@@ -3,24 +3,18 @@ import styles from './ContentDisplay.module.css'
 import Chat from './Chat'
 //websocket module import
 import { socket } from '../../webSocket'
-import RoomContext from '../RoomContext'
-
-
+import GlobalContext from '../../GlobalContext'
 
 const ContentDisplay = () => {
 
   const [username, setUsername] = useState('')
-  const {roomNumber, setRoomNumber} = useContext(RoomContext)
+  const {roomNumber, setRoomNumber} = useContext(GlobalContext)
 
-
-  
   const joinRoom = ()=>{
     if(username !== '' && roomNumber !== ''){
       socket.emit('join_room', roomNumber)
     }
   }
-
-
 
   return (
     <main> 
