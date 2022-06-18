@@ -3,27 +3,34 @@ import RoomContext from '../../GlobalContext'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import {useAuth0} from '@auth0/auth0-react'
+import {socket} from '../../webSocket'
 
 
 
 const Navbar = () => {
-    const {roomNumber, changeRoom} = useContext(RoomContext)
-
+    const {roomNumber, changeRoom, username} = useContext(RoomContext)
     const {user} = useAuth0()
     
+    const joinRoom = ()=>{
+        if(username !== '' && roomNumber !== ''){
+          socket.emit('join_room', roomNumber)
+        }
+      }
+
+
     const roomHandler1 = () => {
         changeRoom('1')
+        joinRoom()
     }
     const roomHandler2 = () => {
         changeRoom('2')
+        joinRoom()
     }
-    const roomHandler3 = () => {
-        changeRoom('3')
-    }
-    console.log(roomNumber)
+   
+    console.log(`changed to room: ${roomNumber}!!`)
     
     if(user){
-        console.log(user.nickname)
+        console.log(user)
     } else{
         console.log('no user logged in')
     }
@@ -32,7 +39,7 @@ const Navbar = () => {
   return (
     <nav>
         <div>
-            { user? `Hello ${user.nickname}`: 'please log in' }
+            { user? `Hello ${user.name}`: 'please log in' }
         </div>
         <ul>
             <li>
@@ -42,8 +49,6 @@ const Navbar = () => {
                 <button onClick={roomHandler1}>Room1</button>
                 <br />
                 <button onClick={roomHandler2}>Room2</button>
-                <br />
-                <button onClick={roomHandler3}>Room3</button>
                 <br />
                 <button>+</button>
                 this is create room button

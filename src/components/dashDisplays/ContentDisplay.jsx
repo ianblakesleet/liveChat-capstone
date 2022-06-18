@@ -7,23 +7,13 @@ import GlobalContext from '../../GlobalContext'
 
 const ContentDisplay = () => {
 
-  const [username, setUsername] = useState('')
-  const {roomNumber, setRoomNumber} = useContext(GlobalContext)
+  const {roomNumber, username} = useContext(GlobalContext)
 
-  const joinRoom = ()=>{
-    if(username !== '' && roomNumber !== ''){
-      socket.emit('join_room', roomNumber)
-    }
-  }
+
 
   return (
     <main> 
-     
-      <input type="text" placeholder='name...'
-      onChange={(e)=>setUsername(e.target.value)}
-      />
-    
-      <button onClick={joinRoom}>send</button> 
+
       <h1>Message:</h1>
       <Chat username={username} room={roomNumber}/>
       </main>
