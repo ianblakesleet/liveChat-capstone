@@ -33,12 +33,12 @@ const Chat = ({username, room}) => {
 
       let dispMessages = messageList.map((mess,index)=>{
             return <div key={index} id={username === mess.author? `${styles.you}` : `${styles.other}`}>
+                <div className={styles.messageMeta}>
+                    <span className={styles.meta}>{mess.author}</span>
+                    <span className={styles.meta}>{mess.time}</span>
+                </div>
                 <div className={styles.message}>
                {mess.message}
-                </div>
-                <div className={styles.messageMeta}>
-                    <span className={styles.meta}>{mess.time}</span>
-                    <span className={styles.meta}>{mess.author}</span>
                 </div>
     
             </div>
@@ -54,8 +54,9 @@ const Chat = ({username, room}) => {
             <input type="text" placeholder='send message...'
             onChange={e=>setCurrentMessage(e.target.value)}
             value={currentMessage}
+            onKeyPress={e=>{e.key === 'Enter' && sendMessage()}}
             />
-            <button type='submit' onClick={sendMessage}>&#9658;</button>
+            <button onClick={sendMessage}>&#8593;</button>
 
         </div>
     </div>
