@@ -29,19 +29,19 @@ const Navbar = () => {
         
     }
    
-    console.log(`changed to room: ${roomNumber}!!`)
+    // console.log(`changed to room: ${roomNumber}!!`)
     
-    if(user){
-        console.log(user)
-    } else{
-        console.log('no user logged in')
-    }
+    // if(user){
+    //     console.log(user)
+    // } else{
+    //     console.log('no user logged in')
+    // }
 
 
   return (
     <nav>
         <div>
-            { user? `Hello ${user.name}`: 'please log in' }
+            { user? `Hello ${user.nickname}`: 'please log in' }
         </div>
         <ul>
             <li>

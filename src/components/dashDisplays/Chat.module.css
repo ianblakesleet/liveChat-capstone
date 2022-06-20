@@ -1,0 +1,42 @@
+
+.container{
+    height:100%;
+    width: 100%;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.chatFooter{
+    align-self: center;
+}
+.chatBody{
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+input {
+    width: 500px;
+    height: 35px;
+    font-size: 1.25rem;
+}
+
+#you {
+    text-align: end;
+}
+#you .message {
+    text-align: end;
+    background-color: green;
+}
+#you .meta {
+    font-size: .75rem;
+    text-align: end;
+}
+#other .message {
+    background-color: aqua;
+}
+#other .meta {
+    font-size: .75rem;
+    
+}
+

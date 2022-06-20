@@ -4,4 +4,6 @@ main {
     margin: 5vh 1vh;
     border-radius: 15px;
     background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
 }

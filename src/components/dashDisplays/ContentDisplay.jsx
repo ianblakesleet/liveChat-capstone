@@ -11,7 +11,7 @@ const ContentDisplay = () => {
   return (
     <main> 
 
-      <h1>Message:</h1>
+      <h1>Room: {roomNumber}</h1>
       <Chat username={username} room={roomNumber}/>
       </main>
   )
