@@ -23,5 +23,3 @@ export function GlobalProvider({ children }) {
 }
 
 export default GlobalContext
-
-//const {roomNumber, setRoomNumber, userName, changeName} = useContext(GlobalContext)

@@ -1,12 +1,15 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const { SERVER_PORT } = process.env
 
 //express uses http under the hood, but I need to access this variable directly for socket io.
 const { createServer } = require('http')
 const { Server } = require('socket.io')
 
 app.use(cors())
+app.use(express.json())
 
 const server = createServer(app)
 const io = new Server(server, {
@@ -15,6 +18,9 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
   },
 })
+//------endpoints for requests-------
+const { addUser } = require('./controller')
+app.post('/api/users', addUser)
 
 //run when a client connects
 io.on('connection', socket => {
@@ -25,15 +31,15 @@ io.on('connection', socket => {
   })
 
   //listens to event called "send_message", the socket.broadcast.emit will then send data(message obj from front end) to all users connected to socket. Just wont send it back to the original sender
-  socket.on('send_message', data => {
-    console.log(data)
-    socket.to(data.room).emit('receive_message', data)
-  })
   socket.on('join_room', data => {
     socket.join(data)
     console.log(`user with id: ${socket.id} joined room: ${data}`)
   })
+  socket.on('send_message', data => {
+    console.log(data)
+    socket.to(data.room).emit('receive_message', data)
+  })
 })
 
-const PORT = 3001 || process.env.PORT
-server.listen(3001, () => console.log(`Server running on port ${PORT}`))
+const PORT = SERVER_PORT || process.env.PORT
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`))

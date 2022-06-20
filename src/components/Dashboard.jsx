@@ -4,26 +4,28 @@ import Header from './dashDisplays/Header'
 import styles from './Dashboard.module.css'
 import GlobalContext from '../GlobalContext'
 import {useAuth0} from '@auth0/auth0-react'
-
-
-
-
-
-
+import axios from 'axios'
 
 
 const Dashboard = () => {
-
-  const {  userName, changeName} = useContext(GlobalContext)
-
+  const {changeName} = useContext(GlobalContext)
   const {user} = useAuth0()
  
-  //once user logs in, this changes global state username to the nickname provided from auth0
+  //once user logs in, this changes global state username to the nickname provided from auth0, also sends post request to automatically add user to database.
  useEffect(()=>{
   if(user){
     changeName(user.nickname)
+    const userInfo = {
+      email: user.email,
+      full_name: user.nickname
+    }
+    axios.post('http://127.0.0.1:3001/api/users', userInfo).then((res)=>{
+    console.log(res.data)
+    }).catch(err=>[
+      console.log(err)
+    ])
   }
- },[])
+ },[user])
 
   
   return (
