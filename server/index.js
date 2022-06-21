@@ -18,10 +18,11 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
   },
 })
-//------endpoints for requests-------
-const { addUser } = require('./controller')
+//------endpoints-------
+const { addUser, createRoom, getRooms } = require('./controller')
 app.post('/api/users', addUser)
-
+app.post('/api/rooms', createRoom)
+app.get('/api/rooms', getRooms)
 //run when a client connects
 io.on('connection', socket => {
   console.log(`User Connected: ${socket.id}`)

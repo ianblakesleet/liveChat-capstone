@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 const Dashboard = () => {
-  const {changeName} = useContext(GlobalContext)
+  const {changeName, setId, userId} = useContext(GlobalContext)
   const {user} = useAuth0()
  
   //once user logs in, this changes global state username to the nickname provided from auth0, also sends post request to automatically add user to database.
@@ -19,14 +19,15 @@ const Dashboard = () => {
       email: user.email,
       full_name: user.nickname
     }
+    //end point has conditional to check for user first before posting... always returning user id
     axios.post('http://127.0.0.1:3001/api/users', userInfo).then((res)=>{
-    console.log(res.data)
+    // console.log(res.data.user_id)
+    setId(res.data.user_id)
     }).catch(err=>[
       console.log(err)
     ])
   }
  },[user])
-
   
   return (
     <div className={styles.flexWrapper}>

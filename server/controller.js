@@ -16,13 +16,75 @@ module.exports = {
     sequelize
       .query(
         `
-    INSERT INTO users (email, full_name)
-    VALUES ('${email}', '${full_name}');
+        SELECT * FROM users
+        WHERE email = '${email}';
+    `
+      )
+      .then(dbRes => {
+        //checks if user exists (response length more than 0)
+        //returning data on user (so i can grab user_id for other things)
+        if (dbRes[0].length !== 0) {
+          res.status(200).send(dbRes[0][0])
+          console.log(dbRes[0])
+        }
+        //if its there isnt a user, make another query to add user to table
+        else {
+          sequelize
+            .query(
+              `
+          INSERT INTO users (email, full_name)
+          VALUES ('${email}', '${full_name}');
+          `
+            )
+            .then(dbRes => {
+              res.status(200).send(dbRes[0][0])
+              console.log(dbRes[0])
+            })
+        }
+      })
+      .catch(err => console.log(err))
+  },
+  createRoom: (req, res) => {
+    const { room, id } = req.body
+    sequelize
+      .query(
+        `
+        SELECT * FROM rooms
+        WHERE room_name = '${room}';
+    `
+      )
+      .then(dbRes => {
+        if (dbRes[0].length !== 0) {
+          res.status(200).send('already exists')
+          console.log(dbRes[0])
+        } else {
+          sequelize
+            .query(
+              `
+          INSERT INTO rooms (room_name, room_author_id)
+          VALUES ('${room}', ${id})
+          `
+            )
+            .then(dbRes => {
+              res.status(200).send(dbRes[(0)[0]])
+              console.log(dbRes[0])
+            })
+        }
+      })
+      .catch(err => console.log(err))
+  },
+  getRooms: (req, res) => {
+    sequelize
+      .query(
+        `
+    SELECT * FROM rooms;
     `
       )
       .then(dbRes => {
         res.status(200).send(dbRes[0])
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+      })
   },
 }

@@ -1,4 +1,3 @@
-
 .modal, .overlay {
     width: 100vw;
     height: 100vh;
@@ -13,8 +12,6 @@
 .overlay {
     background: rgba(49,49,49,0.8);
     backdrop-filter: blur(2px);
-    
-   
 }
 .modalContent {
     position: absolute;
@@ -28,5 +25,10 @@
     max-width: 600px;
     min-width: 300px;
     z-index: 100;
-    
+}
+.hidden{
+    opacity: 0;
+}
+p{
+    color: red;
 }
