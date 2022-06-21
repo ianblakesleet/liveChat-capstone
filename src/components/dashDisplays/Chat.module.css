@@ -1,11 +1,14 @@
+::-webkit-scrollbar {
+    display: none;
+}
 .container{
     height:100%;
     width: 100%;
     background-color: bisque;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
-    overflow-x: hidden
+    justify-content: flex-end;
+    scrollbar-width: none;  /* Firefox */
 }
 .chatFooter{
     align-self: center;
@@ -14,6 +17,8 @@
 .chatBody{
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden
 }
 input {
     width: 450px;
@@ -29,30 +34,35 @@ button{
 #you {
     text-align: end;
 }
- .message {
+.message {
     display: inline-flex;
     border-radius: 10px;
     padding:2px 5px;
     color: whitesmoke;
     font-size: 1.75rem;
     font-weight: 200;
+    max-width: 500px;
+    overflow-x: hidden;
+    
 }
 #you .message {
     text-align: end;
     background-color: #1982FC;
+    margin-right: 15px;
    
 }
 #you .meta {
     font-size: .75rem;
     text-align: end;
-    margin-right: 5px;
+    margin-right: 12px;
 }
 #other .message {
     background-color: #383838;
+    margin-left: 15px;
 }
 #other .meta {
     font-size: .75rem;
-    margin-left: 5px;
+    margin-left: 12px;
     
 }
 

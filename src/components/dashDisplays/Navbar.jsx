@@ -24,20 +24,9 @@ const Navbar = () => {
         changeRoom('1')   
     }
     const roomHandler2 = () => {
-         changeRoom('2')
-         
-        
+         changeRoom('2') 
     }
    
-    // console.log(`changed to room: ${roomNumber}!!`)
-    
-    // if(user){
-    //     console.log(user)
-    // } else{
-    //     console.log('no user logged in')
-    // }
-
-
   return (
     <nav>
         <div>
@@ -59,9 +48,6 @@ const Navbar = () => {
             </li>
             <li>
                 favorites display component
-            </li>
-            <li>
-                logout button
             </li>
         </ul>
     </nav>

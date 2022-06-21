@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { socket } from '../../webSocket'
 import styles from './Chat.module.css'
+import ScrollToBottom from 'react-scroll-to-bottom'
 
 const Chat = ({username, room}) => {
     
@@ -29,6 +30,7 @@ const Chat = ({username, room}) => {
             setMessageList(prevMessageList => [...prevMessageList, data])
             console.log(data.message)
         })
+        
       }, [socket])
 
       let dispMessages = messageList.map((mess,index)=>{
@@ -47,9 +49,9 @@ const Chat = ({username, room}) => {
   return (
     <div className={styles.container}>
     
-        <div className={styles.chatBody}>
+        <ScrollToBottom className={styles.chatBody}>
           {dispMessages}
-        </div>
+        </ScrollToBottom>
         <div className={styles.chatFooter}>
             <input type="text" placeholder='send message...'
             onChange={e=>setCurrentMessage(e.target.value)}
