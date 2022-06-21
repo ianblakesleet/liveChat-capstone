@@ -4,6 +4,7 @@ import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import {useAuth0} from '@auth0/auth0-react'
 import {socket} from '../../webSocket'
+import CreateRoomModal from './CreateRoomModal'
 
 
 const Navbar = () => {
@@ -42,9 +43,9 @@ const Navbar = () => {
                 <br />
                 <button onClick={roomHandler2}>Room2</button>
                
-                <br />
-                <button>+</button>
-                this is create room button
+            </li>
+            <li>
+            <CreateRoomModal/>
             </li>
             <li>
                 favorites display component
