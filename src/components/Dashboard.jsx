@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 const Dashboard = () => {
-  const {changeName, setId, userId} = useContext(GlobalContext)
+  const {changeName, setId} = useContext(GlobalContext)
   const {user} = useAuth0()
  
   //once user logs in, this changes global state username to the nickname provided from auth0, also sends post request to automatically add user to database.

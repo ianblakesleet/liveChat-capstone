@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: flex-end;
     scrollbar-width: none;  /* Firefox */
+    overflow: scroll;
 }
 .chatFooter{
     align-self: center;
