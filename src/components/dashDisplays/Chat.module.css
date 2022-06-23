@@ -10,19 +10,17 @@
     flex-direction: column;
     justify-content: flex-end;
     overflow: scroll;
-    scrollbar-width: none;
 }
 .chatFooter{
     align-self: center;
     margin-top: 10px;
+    
 }
 .chatBody{
     display: flex;
     flex-direction: column;
     overflow: scroll;
     overflow-x: hidden;
-    scrollbar-width: none;
-
 }
 input {
     width: 450px;

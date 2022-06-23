@@ -1,0 +1,14 @@
+ul{
+    list-style: none;
+    padding-left: 10px;
+}
+ul button {
+    background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+}
+nav div{
+    margin-top: 10px;
+}

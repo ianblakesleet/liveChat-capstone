@@ -9,7 +9,7 @@ const ContentDisplay = () => {
 
 	return (
 		<main>
-			{roomNumber === '' && <h1>Please select a room</h1>}
+			{roomNumber === '' && <h1>Please select a room...</h1>}
 			{roomNumber !== '' && (
 				<>
 					<button onClick={() => changeRoom('')}>Exit room</button>

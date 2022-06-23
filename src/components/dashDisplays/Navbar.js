@@ -6,6 +6,7 @@ import CreateRoomModal from './CreateRoomModal'
 import axios from 'axios'
 import { useState } from 'react'
 import RoomButton from './RoomButton'
+import styles from './Navbar.module.css'
 
 const Navbar = () => {
 	const [roomList, setRoomList] = useState([])
