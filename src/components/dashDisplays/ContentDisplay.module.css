@@ -3,7 +3,10 @@ main {
     width: 80vw;
     margin: 5vh 1vh;
     border-radius: 15px;
-    background-color: aquamarine;
+    background-color: white;
     display: flex;
     flex-direction: column;
+    -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
+    box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
 }

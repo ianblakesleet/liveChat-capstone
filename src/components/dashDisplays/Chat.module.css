@@ -4,12 +4,13 @@
 .container{
     height:100%;
     width: 100%;
-    background-color: bisque;
+    background-color: white;
     display: flex;
+    border-radius: 15px;
     flex-direction: column;
     justify-content: flex-end;
-    scrollbar-width: none;  /* Firefox */
     overflow: scroll;
+    scrollbar-width: none;
 }
 .chatFooter{
     align-self: center;
@@ -19,7 +20,9 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    overflow-x: hidden
+    overflow-x: hidden;
+    scrollbar-width: none;
+
 }
 input {
     width: 450px;

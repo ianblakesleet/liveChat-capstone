@@ -57,7 +57,6 @@ const Chat = ({ username, room }) => {
 				<div className={styles.messageMeta}>
 					<span className={styles.meta}>{mess.author}</span>
 					<span className={styles.meta}>{mess.time}</span>
-					<span className={styles.meta}>{mess.room}</span>
 				</div>
 				<div className={styles.message}>{mess.message}</div>
 			</div>

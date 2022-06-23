@@ -3,7 +3,7 @@ header {
     width: 23vh;
     margin: 5vh 2vh;
     border-radius: 15px;
-    background-color: grey;
+    background-color: #406e8e;
     display: flex;
     flex-direction: column;
 }
@@ -11,5 +11,5 @@ header {
     text-align: center;
     height: 8vh;
     border-radius: 15px;
-    background-color: aqua;
+    background-color: #8ea8c3;
 }
