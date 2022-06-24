@@ -8,10 +8,9 @@ import RoomButton from './RoomButton'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
-	const [roomList, setRoomList] = useState([])
 	const [currentRoom, setCurrentRoom] = useState('')
+	const [roomList, setRoomList] = useState([])
 	const { user } = useAuth0()
-	// console.log(user)
 
 	const getAllRooms = () => {
 		axios.get('http://127.0.0.1:3001/api/rooms').then((res) => {
@@ -19,14 +18,14 @@ const Navbar = () => {
 			setRoomList(res.data)
 		})
 	}
+
 	useEffect(() => {
 		getAllRooms()
 	}, [])
 
-	// setInterval(getAllRooms, 15000)
+	// setInterval(getAllRooms, 1000)
 
 	let listDisplay = roomList.map((room, index) => {
-		// console.log(room.room_id)
 		return (
 			<RoomButton
 				currentRoom={currentRoom}

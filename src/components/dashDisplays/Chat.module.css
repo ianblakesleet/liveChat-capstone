@@ -22,7 +22,7 @@
     overflow: scroll;
     overflow-x: hidden;
 }
-input {
+.chatInput {
     width: 450px;
     height: 35px;
     font-size: 1.25rem;

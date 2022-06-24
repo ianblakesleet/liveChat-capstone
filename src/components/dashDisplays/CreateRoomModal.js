@@ -44,9 +44,6 @@ const CreateRoomModal = ({ getAllRooms }) => {
 				})
 		}
 	}
-	useEffect(() => {
-		getAllRooms()
-	}, [])
 
 	return (
 		<>
@@ -58,7 +55,7 @@ const CreateRoomModal = ({ getAllRooms }) => {
 				<div className={styles.modal}>
 					<div onClick={toggleModal} className={styles.overlay}></div>
 					<div className={styles.modalContent}>
-						<h2>Add a chat room...</h2>
+						<h2>Add a chat room</h2>
 						<p
 							className={
 								alreadyExists ? null : `${styles.hidden}`
@@ -68,12 +65,14 @@ const CreateRoomModal = ({ getAllRooms }) => {
 						</p>
 						<input
 							type="text"
+							placeholder="room name"
 							onChange={(e) => setRoomName(e.target.value)}
 							value={roomName}
 						/>
 						<AwesomeButtonProgress
 							type="primary"
-							size="medium"
+							size="small"
+							resultLabel="Sent"
 							action={(element, next) => {
 								if (roomName !== '') {
 									setTimeout(() => {
@@ -85,7 +84,6 @@ const CreateRoomModal = ({ getAllRooms }) => {
 						>
 							Create
 						</AwesomeButtonProgress>
-						{/* <button onClick={createRoom}>Create</button> */}
 					</div>
 				</div>
 			)}

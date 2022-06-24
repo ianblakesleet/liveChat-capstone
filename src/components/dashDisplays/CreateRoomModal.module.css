@@ -33,3 +33,12 @@
 p{
     color: red;
 }
+
+.modalContent input{
+    width: 250px;
+    line-height: 39px;
+    margin-right: 5px;
+    border: 1px solid black;
+    /* border-radius: 5px; */
+
+}

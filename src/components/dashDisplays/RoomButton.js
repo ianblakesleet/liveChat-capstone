@@ -15,7 +15,7 @@ const RoomButton = ({ room, room_id, setCurrentRoom }) => {
 		if (room !== roomName) {
 			setIsActive(false)
 		}
-	}, [roomNumber])
+	}, [roomNumber, roomName])
 
 	const roomHandler = () => {
 		setCurrentRoom(room_id)

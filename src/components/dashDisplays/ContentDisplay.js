@@ -4,7 +4,7 @@ import Chat from './Chat'
 import GlobalContext from '../../GlobalContext'
 
 const ContentDisplay = () => {
-	const { roomNumber, username, changeRoom, roomName } =
+	const { roomNumber, username, changeRoomName, roomName } =
 		useContext(GlobalContext)
 
 	return (
@@ -12,7 +12,9 @@ const ContentDisplay = () => {
 			{roomNumber === '' && <h1>Please select a room...</h1>}
 			{roomNumber !== '' && (
 				<>
-					<button onClick={() => changeRoom('')}>Exit room</button>
+					<button onClick={() => changeRoomName('')}>
+						Exit room
+					</button>
 					<h1>{roomName}</h1>
 					<Chat username={username} room={roomNumber} />
 				</>

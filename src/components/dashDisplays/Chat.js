@@ -70,6 +70,7 @@ const Chat = ({ username, room }) => {
 			</ScrollToBottom>
 			<div className={styles.chatFooter}>
 				<input
+					className={styles.chatInput}
 					type="text"
 					placeholder="send message..."
 					onChange={(e) => setCurrentMessage(e.target.value)}
