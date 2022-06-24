@@ -54,7 +54,7 @@ const Chat = ({ username, room }) => {
 						: `${styles.other}`
 				}
 			>
-				<div className={styles.messageMeta}>
+				<div>
 					<span className={styles.meta}>{mess.author}</span>
 					<span className={styles.meta}>{mess.time}</span>
 				</div>

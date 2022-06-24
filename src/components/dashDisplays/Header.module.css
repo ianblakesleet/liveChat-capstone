@@ -3,9 +3,12 @@ header {
     width: 23vh;
     margin: 5vh 2vh;
     border-radius: 15px;
-    background-color: #406e8e;
+    background-color: white;
     display: flex;
     flex-direction: column;
+    -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
+    -moz-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
+    box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
 }
 .logo{
     text-align: center;

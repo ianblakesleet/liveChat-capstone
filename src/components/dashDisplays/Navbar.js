@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
 import CreateRoomModal from './CreateRoomModal'
 import axios from 'axios'
-import { useState } from 'react'
 import RoomButton from './RoomButton'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
 	const [roomList, setRoomList] = useState([])
+	const [currentRoom, setCurrentRoom] = useState('')
 	const { user } = useAuth0()
 	// console.log(user)
 
@@ -23,13 +23,17 @@ const Navbar = () => {
 		getAllRooms()
 	}, [])
 
+	// setInterval(getAllRooms, 15000)
+
 	let listDisplay = roomList.map((room, index) => {
+		// console.log(room.room_id)
 		return (
 			<RoomButton
+				currentRoom={currentRoom}
+				setCurrentRoom={setCurrentRoom}
 				key={index}
 				room={room.room_name}
 				room_id={room.room_id}
-				room_author_id={room.room_author_id}
 			/>
 		)
 	})

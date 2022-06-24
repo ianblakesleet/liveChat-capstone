@@ -5,6 +5,9 @@ import { useContext } from 'react'
 import { useState } from 'react'
 import GlobalContext from '../../GlobalContext'
 import styles from './CreateRoomModal.module.css'
+import { AwesomeButtonProgress } from 'react-awesome-button'
+
+import 'react-awesome-button/dist/themes/theme-blue.css'
 
 const CreateRoomModal = ({ getAllRooms }) => {
 	const [modal, setModal] = useState(false)
@@ -27,7 +30,7 @@ const CreateRoomModal = ({ getAllRooms }) => {
 			axios
 				.post('http://127.0.0.1:3001/api/rooms', roomInfo)
 				.then((res) => {
-					console.log(res.data)
+					// console.log(res.data)
 					if (res.data === 'already exists') {
 						setAlreadyExists(true)
 						setRoomName('')
@@ -68,7 +71,21 @@ const CreateRoomModal = ({ getAllRooms }) => {
 							onChange={(e) => setRoomName(e.target.value)}
 							value={roomName}
 						/>
-						<button onClick={createRoom}>Create</button>
+						<AwesomeButtonProgress
+							type="primary"
+							size="medium"
+							action={(element, next) => {
+								if (roomName !== '') {
+									setTimeout(() => {
+										createRoom()
+										next()
+									}, 2000)
+								}
+							}}
+						>
+							Create
+						</AwesomeButtonProgress>
+						{/* <button onClick={createRoom}>Create</button> */}
 					</div>
 				</div>
 			)}
@@ -77,10 +94,3 @@ const CreateRoomModal = ({ getAllRooms }) => {
 }
 
 export default CreateRoomModal
-
-// {alreadyExists && (
-//   <p>Room name already taken!</p>
-// )}
-// {!alreadyExists && (
-//   <p className={styles.hidden}>hidden</p>
-// )}

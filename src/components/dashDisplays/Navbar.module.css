@@ -6,9 +6,11 @@ ul button {
     background: none;
 	border: none;
 	padding: 0;
-	cursor: pointer;
-	outline: inherit;
+    cursor: pointer;
 }
 nav div{
     margin-top: 10px;
+}
+nav {
+    margin: 0 auto;
 }
