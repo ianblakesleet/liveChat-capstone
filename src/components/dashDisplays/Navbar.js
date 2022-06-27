@@ -10,6 +10,7 @@ import styles from './Navbar.module.css'
 const Navbar = () => {
 	const [currentRoom, setCurrentRoom] = useState('')
 	const [roomList, setRoomList] = useState([])
+	const [toggleRooms, setToggleRooms] = useState(false)
 	const { user } = useAuth0()
 
 	const getAllRooms = () => {
@@ -18,7 +19,6 @@ const Navbar = () => {
 			setRoomList(res.data)
 		})
 	}
-
 	useEffect(() => {
 		getAllRooms()
 	}, [])
@@ -43,10 +43,14 @@ const Navbar = () => {
 			<div>{user ? <LogoutButton /> : <LoginButton />}</div>
 			{user && (
 				<div>
-					<h2>rooms</h2>
-					<ul>{listDisplay}</ul>
 					<div>
 						<CreateRoomModal getAllRooms={getAllRooms} />
+					</div>
+					<div>
+						<button onClick={() => setToggleRooms(!toggleRooms)}>
+							Rooms
+						</button>
+						{toggleRooms && <ul>{listDisplay}</ul>}
 					</div>
 				</div>
 			)}

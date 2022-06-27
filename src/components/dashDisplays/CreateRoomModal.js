@@ -1,12 +1,10 @@
 import axios from 'axios'
 import React from 'react'
-import { useEffect } from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
 import GlobalContext from '../../GlobalContext'
 import styles from './CreateRoomModal.module.css'
 import { AwesomeButtonProgress } from 'react-awesome-button'
-
 import 'react-awesome-button/dist/themes/theme-blue.css'
 
 const CreateRoomModal = ({ getAllRooms }) => {

@@ -3,7 +3,7 @@ header {
     width: 23vh;
     margin: 5vh 2vh;
     border-radius: 15px;
-    background-color: white;
+    background-color: #112B3C;
     display: flex;
     flex-direction: column;
     -webkit-box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);

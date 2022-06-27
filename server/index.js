@@ -36,10 +36,11 @@ io.on('connection', (socket) => {
 	})
 })
 //------endpoints-------
-const { addUser, createRoom, getRooms } = require('./controller')
+const { addUser, createRoom, getRooms, postMessage } = require('./controller')
 app.post('/api/users', addUser)
 app.post('/api/rooms', createRoom)
 app.get('/api/rooms', getRooms)
+app.post('/api/messages', postMessage)
 
 const PORT = SERVER_PORT || process.env.PORT
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`))

@@ -16,3 +16,11 @@ h1{
     text-align: center;
     color: #000033;
 }
+.exitBtn{
+    color: red;
+    width: 50px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 25px;
+    border: 1px solid;
+}

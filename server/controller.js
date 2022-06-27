@@ -67,7 +67,7 @@ module.exports = {
           `
 						)
 						.then((dbRes) => {
-							res.status(200).send(dbRes[(0)[0]])
+							res.status(200).send(dbRes[0][0])
 							console.log(dbRes[0])
 						})
 				}
@@ -86,6 +86,36 @@ module.exports = {
 			})
 			.catch((err) => {
 				console.log(err)
+			})
+	},
+	postMessage: (req, res) => {
+		const { message, roomID, userID, time } = req.body
+		sequelize
+			.query(
+				`
+		INSERT INTO messages (message, message_time, message_room_id, message_author_id)
+		VALUES ('${message}', '${time}', ${roomID}, ${userID})
+		`
+			)
+			.then((dbRes) => {
+				res.status(200).send(dbRes[0])
+				console.log(dbRes[0])
+			})
+	},
+	getMessages: (req, res) => {
+		const { roomID, userID } = req.params
+		sequelize
+			.query(
+				`
+		SELECT m.message, m.message_time, u.full_name
+		FROM messages as m
+		JOIN users as u
+		ON m.message_room_id = ${roomID} AND m.message_author_id = u.user_id;
+		`
+			)
+			.then((dbRes) => {
+				res.status(200).send(dbRes[0])
+				console.log(dbRes[0])
 			})
 	},
 }

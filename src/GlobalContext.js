@@ -20,6 +20,7 @@ export function GlobalProvider({ children }) {
 	const changeRoomName = (str) => {
 		setRoomName(str)
 	}
+	console.log(roomNumber)
 
 	return (
 		<GlobalContext.Provider

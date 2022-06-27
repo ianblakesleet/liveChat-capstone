@@ -1,0 +1,18 @@
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    email VARCHAR(100) UNIQUE,
+    full_name VARCHAR(100)
+    );
+
+CREATE TABLE rooms (
+    room_id SERIAL PRIMARY KEY,
+    room_name VARCHAR(100) UNIQUE,
+    room_author_id INT NOT NULL REFERENCES users(user_id)
+    );
+
+CREATE TABLE messages (
+message_id serial primary key,
+message VARCHAR(2000),
+message_room_id INT REFERENCES rooms(room_id),
+message_author_id INT REFERENCES users(user_id)
+);

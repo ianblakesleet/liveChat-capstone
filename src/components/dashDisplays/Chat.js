@@ -4,13 +4,33 @@ import styles from './Chat.module.css'
 import ScrollToBottom from 'react-scroll-to-bottom'
 import { useContext } from 'react'
 import GlobalContext from '../../GlobalContext'
+import axios from 'axios'
 
 const Chat = ({ username, room }) => {
 	const [currentMessage, setCurrentMessage] = useState('')
 	const [messageList, setMessageList] = useState([])
-	const { roomNumber } = useContext(GlobalContext)
+	const { userId, roomNumber } = useContext(GlobalContext)
 
 	const sendMessage = async () => {
+		//post message to db
+		// if (currentMessage !== '') {
+		// 	const messageObj = {
+		// 		message: currentMessage,
+		// 		roomID: room,
+		// 		userID: userId,
+		// 		time:
+		// 			new Date(Date.now()).getHours() +
+		// 			':' +
+		// 			new Date(Date.now()).getMinutes(),
+		// 	}
+		// 	axios
+		// 		.post(`http://localhost:3001/api/messages`, messageObj)
+		// 		.then((res) => {
+		// 			console.log(res.data)
+		// 		})
+		// }
+
+		//socketio
 		if (currentMessage !== '') {
 			const messageData = {
 				room: room,
@@ -31,13 +51,13 @@ const Chat = ({ username, room }) => {
 		}
 	}
 
-	//this functions listens to a receive_message event and adds it to message list array. socket is a dependecy.
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			setMessageList((prevMessageList) => [...prevMessageList, data])
-			console.log(data.message)
+			if (data.room === room)
+				setMessageList((prevMessageList) => [...prevMessageList, data])
+			console.log(data)
 		})
-	}, [socket])
+	}, [socket, roomNumber])
 
 	//on room change, will clear displayed chats from screen
 	useEffect(() => {
@@ -79,7 +99,7 @@ const Chat = ({ username, room }) => {
 						e.key === 'Enter' && sendMessage()
 					}}
 				/>
-				<button onClick={sendMessage}>&#8593;</button>
+				<button onClick={sendMessage}>&#8593;&#8593;</button>
 			</div>
 		</div>
 	)
