@@ -22,10 +22,10 @@ const Chat = ({ username, room }) => {
 		if (currentMessage !== '') {
 			const messageData = {
 				room: room,
-				author: username,
+				full_name: username,
 				message: currentMessage,
 				userID: userId,
-				time:
+				message_time:
 					new Date(Date.now()).getHours() +
 					':' +
 					new Date(Date.now()).getMinutes(),
@@ -41,10 +41,10 @@ const Chat = ({ username, room }) => {
 		if (currentMessage !== '') {
 			const messageData = {
 				room: room,
-				author: username,
+				full_name: username,
 				message: currentMessage,
 				userID: userId,
-				time:
+				message_time:
 					new Date(Date.now()).getHours() +
 					':' +
 					new Date(Date.now()).getMinutes(),
@@ -74,14 +74,14 @@ const Chat = ({ username, room }) => {
 			<div
 				key={index}
 				id={
-					username === mess.author
+					username === mess.full_name
 						? `${styles.you}`
 						: `${styles.other}`
 				}
 			>
 				<div>
-					<span className={styles.meta}>{mess.author}</span>
-					<span className={styles.meta}>{mess.time}</span>
+					<span className={styles.meta}>{mess.full_name}</span>
+					<span className={styles.meta}>{mess.message_time}</span>
 				</div>
 				<div className={styles.message}>{mess.message}</div>
 			</div>
