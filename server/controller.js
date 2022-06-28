@@ -63,7 +63,7 @@ module.exports = {
 						.query(
 							`
           INSERT INTO rooms (room_name, room_author_id)
-          VALUES ('${room}', ${id})
+          VALUES ('${room}', ${id});
           `
 						)
 						.then((dbRes) => {
@@ -94,7 +94,7 @@ module.exports = {
 			.query(
 				`
 		INSERT INTO messages (message, message_time, message_room_id, message_author_id)
-		VALUES ('${message}', '${time}', ${room}, ${userID})
+		VALUES ('${message}', '${time}', ${room}, ${userID});
 		`
 			)
 			.then((dbRes) => {
@@ -103,14 +103,15 @@ module.exports = {
 			})
 	},
 	getMessages: (req, res) => {
-		const { roomID, userID } = req.params
+		const { roomNumber } = req.params
+		console.log(roomNumber)
 		sequelize
 			.query(
 				`
-		SELECT m.message, m.message_time, u.full_name
-		FROM messages as m
-		JOIN users as u
-		ON m.message_room_id = ${roomID} AND m.message_author_id = u.user_id;
+				SELECT m.message, m.message_time, u.full_name
+				FROM messages as m
+				JOIN users as u
+				ON m.message_room_id = ${roomNumber} AND m.message_author_id = u.user_id;
 		`
 			)
 			.then((dbRes) => {

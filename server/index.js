@@ -40,10 +40,17 @@ io.on('connection', (socket) => {
 	})
 })
 //------endpoints-------
-const { addUser, createRoom, getRooms, postMessage } = require('./controller')
+const {
+	addUser,
+	createRoom,
+	getRooms,
+	postMessage,
+	getMessages,
+} = require('./controller')
 app.post('/api/users', addUser)
 app.post('/api/rooms', createRoom)
 app.get('/api/rooms', getRooms)
+app.get('/api/messages/:roomNumber', getMessages)
 app.post('/api/messages', postMessage)
 
 const PORT = SERVER_PORT || process.env.PORT

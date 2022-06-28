@@ -87,6 +87,17 @@ const Chat = ({ username, room }) => {
 			</div>
 		)
 	})
+	useEffect(() => {
+		if (roomNumber !== '') {
+			axios
+				.get(`http://localhost:3001/api/messages/${roomNumber}`)
+				.then((res) => {
+					console.log(res.data)
+
+					setMessageList([...res.data])
+				})
+		}
+	}, [roomNumber])
 
 	return (
 		<div className={styles.container}>
