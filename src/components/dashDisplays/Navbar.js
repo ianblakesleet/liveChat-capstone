@@ -10,7 +10,7 @@ import styles from './Navbar.module.css'
 const Navbar = () => {
 	const [currentRoom, setCurrentRoom] = useState('')
 	const [roomList, setRoomList] = useState([])
-	const [toggleRooms, setToggleRooms] = useState(false)
+	const [toggleRooms, setToggleRooms] = useState(true)
 	const { user } = useAuth0()
 
 	const getAllRooms = () => {
@@ -50,7 +50,9 @@ const Navbar = () => {
 						<button onClick={() => setToggleRooms(!toggleRooms)}>
 							Rooms
 						</button>
-						{toggleRooms && <ul>{listDisplay}</ul>}
+						<ul className={toggleRooms && `${styles.hidden}`}>
+							{listDisplay}
+						</ul>
 					</div>
 				</div>
 			)}

@@ -26,6 +26,7 @@ const ContentDisplay = () => {
 							onClick={exitRoomHandler}
 						></img>
 						<h1>{roomName}</h1>
+						<span></span>
 					</div>
 					<Chat username={username} room={roomNumber} />
 				</>

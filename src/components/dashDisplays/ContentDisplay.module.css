@@ -11,11 +11,12 @@ main {
     box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
     justify-content: center;
 }
-
 h1{
-    text-align: center;
     color: #000033;
+    text-align: center;
 }
+
+
 .exitBtn{
     width: 50px;
     text-align: center;
@@ -25,13 +26,5 @@ h1{
 }
 .chatHeader{
     display: flex;
+    justify-content: space-between;
 }
-
-/* .exitBtn{
-    color: red;
-    width: 50px;
-    text-align: center;
-    margin: 5px;
-    border-radius: 25px;
-    border: 1px solid;
-} */
