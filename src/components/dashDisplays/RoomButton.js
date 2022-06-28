@@ -18,15 +18,14 @@ const RoomButton = ({ room, room_id, setCurrentRoom }) => {
 	}, [roomName])
 
 	const roomHandler = () => {
+		socket.emit('leave_room', roomNumber)
 		setCurrentRoom(room_id)
 		changeRoom(room_id)
 		changeRoomName(room)
 		setIsActive(true)
 	}
 	useEffect(() => {
-		if (roomNumber !== '') {
-			socket.emit('join_room', roomNumber)
-		}
+		socket.emit('join_room', roomNumber)
 	}, [roomNumber])
 	return (
 		<li>

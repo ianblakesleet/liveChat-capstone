@@ -11,12 +11,19 @@ const Chat = ({ username, room }) => {
 	const [messageList, setMessageList] = useState([])
 	const { userId, roomNumber } = useContext(GlobalContext)
 
+	const submitHandler = (event) => {
+		event.preventDefault()
+		sendMessage()
+		sendMessageToDb()
+	}
+
 	const sendMessageToDb = () => {
 		//post message to db
 		if (currentMessage !== '') {
-			const messageObj = {
+			const messageData = {
+				room: room,
+				author: username,
 				message: currentMessage,
-				roomID: room,
 				userID: userId,
 				time:
 					new Date(Date.now()).getHours() +
@@ -24,7 +31,7 @@ const Chat = ({ username, room }) => {
 					new Date(Date.now()).getMinutes(),
 			}
 			axios
-				.post(`http://localhost:3001/api/messages`, messageObj)
+				.post(`http://localhost:3001/api/messages`, messageData)
 				.then((res) => {
 					console.log(res.data)
 				})
@@ -36,6 +43,7 @@ const Chat = ({ username, room }) => {
 				room: room,
 				author: username,
 				message: currentMessage,
+				userID: userId,
 				time:
 					new Date(Date.now()).getHours() +
 					':' +
@@ -50,16 +58,13 @@ const Chat = ({ username, room }) => {
 			setCurrentMessage('')
 		}
 	}
-
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			// if (data.room === room)
 			setMessageList((prevMessageList) => [...prevMessageList, data])
 			console.log(data)
 		})
-	}, [socket, roomNumber])
+	}, [socket])
 
-	//on room change, will clear displayed chats from screen
 	useEffect(() => {
 		setMessageList([])
 	}, [roomNumber])
@@ -88,19 +93,16 @@ const Chat = ({ username, room }) => {
 			<ScrollToBottom className={styles.chatBody}>
 				{dispMessages}
 			</ScrollToBottom>
-			<div className={styles.chatFooter}>
+			<form onSubmit={submitHandler} className={styles.chatFooter}>
 				<input
 					className={styles.chatInput}
 					type="text"
 					placeholder="send message..."
 					onChange={(e) => setCurrentMessage(e.target.value)}
 					value={currentMessage}
-					onKeyPress={(e) => {
-						e.key === 'Enter' && sendMessage()
-					}}
 				/>
-				<button onClick={sendMessage}>&#8593;&#8593;</button>
-			</div>
+				<button>&#8593;&#8593;</button>
+			</form>
 		</div>
 	)
 }

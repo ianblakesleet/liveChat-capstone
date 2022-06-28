@@ -30,6 +30,10 @@ io.on('connection', (socket) => {
 		socket.join(data)
 		console.log(`user with id: ${socket.id} joined room: ${data}`)
 	})
+	socket.on('leave_room', (data) => {
+		socket.leave(data)
+		console.log(`user with id: ${socket.id} left room: ${data}`)
+	})
 	socket.on('send_message', (data) => {
 		console.log(data)
 		socket.to(data.room).emit('receive_message', data)

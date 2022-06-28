@@ -89,12 +89,12 @@ module.exports = {
 			})
 	},
 	postMessage: (req, res) => {
-		const { message, roomID, userID, time } = req.body
+		const { message, room, userID, time } = req.body
 		sequelize
 			.query(
 				`
 		INSERT INTO messages (message, message_time, message_room_id, message_author_id)
-		VALUES ('${message}', '${time}', ${roomID}, ${userID})
+		VALUES ('${message}', '${time}', ${room}, ${userID})
 		`
 			)
 			.then((dbRes) => {
