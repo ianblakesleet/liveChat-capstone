@@ -39,7 +39,9 @@ const Navbar = () => {
 
 	return (
 		<nav>
-			<div>{user ? `Hello ${user.nickname}` : 'please log in'}</div>
+			<div className={styles.userWelcome}>
+				{user ? `Hello ${user.nickname}` : 'please log in'}
+			</div>
 			<div>{user ? <LogoutButton /> : <LoginButton />}</div>
 			{user && (
 				<div>
@@ -50,7 +52,7 @@ const Navbar = () => {
 						<button onClick={() => setToggleRooms(!toggleRooms)}>
 							Rooms
 						</button>
-						<ul className={toggleRooms && `${styles.hidden}`}>
+						<ul className={toggleRooms ? `${styles.hidden}` : null}>
 							{listDisplay}
 						</ul>
 					</div>
