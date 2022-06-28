@@ -13,8 +13,8 @@
 }
 .chatFooter{
     align-self: center;
+    width: 600px;
     margin-top: 10px;
-    
 }
 .chatBody{
     display: flex;

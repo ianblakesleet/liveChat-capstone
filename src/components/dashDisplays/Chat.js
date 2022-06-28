@@ -5,6 +5,7 @@ import ScrollToBottom from 'react-scroll-to-bottom'
 import { useContext } from 'react'
 import GlobalContext from '../../GlobalContext'
 import axios from 'axios'
+import InputEmoji from 'react-input-emoji'
 
 const Chat = ({ username, room }) => {
 	const [currentMessage, setCurrentMessage] = useState('')
@@ -12,7 +13,7 @@ const Chat = ({ username, room }) => {
 	const { userId, roomNumber } = useContext(GlobalContext)
 
 	const submitHandler = (event) => {
-		event.preventDefault()
+		// event.preventDefault()
 		sendMessage()
 		sendMessageToDb()
 	}
@@ -33,7 +34,7 @@ const Chat = ({ username, room }) => {
 			axios
 				.post(`http://localhost:3001/api/messages`, messageData)
 				.then((res) => {
-					console.log(res.data)
+					// console.log(res.data)
 				})
 		}
 	}
@@ -92,7 +93,7 @@ const Chat = ({ username, room }) => {
 			axios
 				.get(`http://localhost:3001/api/messages/${roomNumber}`)
 				.then((res) => {
-					console.log(res.data)
+					// console.log(res.data)
 
 					setMessageList([...res.data])
 				})
@@ -104,15 +105,23 @@ const Chat = ({ username, room }) => {
 			<ScrollToBottom className={styles.chatBody}>
 				{dispMessages}
 			</ScrollToBottom>
-			<form onSubmit={submitHandler} className={styles.chatFooter}>
-				<input
+			<form className={styles.chatFooter}>
+				{/* <input
 					className={styles.chatInput}
 					type="text"
 					placeholder="send message..."
 					onChange={(e) => setCurrentMessage(e.target.value)}
 					value={currentMessage}
 				/>
-				<button>&#8593;&#8593;</button>
+				<button>&#8593;&#8593;</button> */}
+				<InputEmoji
+					cleanOnEnter
+					borderColor="#7F8487"
+					fontSize={17}
+					onEnter={submitHandler}
+					onChange={setCurrentMessage}
+					height={100}
+				/>
 			</form>
 		</div>
 	)

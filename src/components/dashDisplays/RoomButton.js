@@ -30,7 +30,7 @@ const RoomButton = ({ room, room_id, setCurrentRoom }) => {
 	return (
 		<li>
 			<button
-				className={isActive ? `${styles.active}` : null}
+				className={isActive ? `${styles.active}` : `${styles.roomBtn}`}
 				onClick={roomHandler}
 			>
 				{room}

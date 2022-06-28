@@ -18,13 +18,15 @@ const ContentDisplay = () => {
 			{roomNumber === '' && <h1>Please select a room...</h1>}
 			{roomNumber !== '' && (
 				<>
-					<button
-						onClick={exitRoomHandler}
-						className={styles.exitBtn}
-					>
-						X
-					</button>
-					<h1>{roomName}</h1>
+					<div className={styles.chatHeader}>
+						<img
+							className={styles.exitBtn}
+							// src="https://cdn-icons-png.flaticon.com/512/3094/3094700.png"
+							src="https://cdn-icons-png.flaticon.com/512/3094/3094628.png"
+							onClick={exitRoomHandler}
+						></img>
+						<h1>{roomName}</h1>
+					</div>
 					<Chat username={username} room={roomNumber} />
 				</>
 			)}

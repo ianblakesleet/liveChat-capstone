@@ -17,10 +17,21 @@ h1{
     color: #000033;
 }
 .exitBtn{
+    width: 50px;
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+
+}
+.chatHeader{
+    display: flex;
+}
+
+/* .exitBtn{
     color: red;
     width: 50px;
     text-align: center;
     margin: 5px;
     border-radius: 25px;
     border: 1px solid;
-}
+} */

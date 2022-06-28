@@ -5,7 +5,7 @@ import Navbar from './Navbar'
 const Header = () => {
 	return (
 		<header>
-			<div className={styles.logo}>DEV CHAT LOGO HERE</div>
+			<div className={styles.logo}>LOGO GOES HERE</div>
 			<Navbar />
 		</header>
 	)
