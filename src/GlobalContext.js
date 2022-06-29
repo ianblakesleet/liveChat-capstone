@@ -7,6 +7,7 @@ export function GlobalProvider({ children }) {
 	const [username, setUserName] = useState('')
 	const [userId, setUserId] = useState()
 	const [roomName, setRoomName] = useState('')
+	const [roomAuthor, setRoomAuthor] = useState(false)
 
 	const changeRoom = (num) => {
 		setRoomNumber(num)
@@ -20,7 +21,10 @@ export function GlobalProvider({ children }) {
 	const changeRoomName = (str) => {
 		setRoomName(str)
 	}
-	// console.log(roomNumber)
+	const changeRoomAuthor = (boolean) => {
+		setRoomAuthor(boolean)
+	}
+	console.log(roomAuthor)
 
 	return (
 		<GlobalContext.Provider
@@ -33,6 +37,8 @@ export function GlobalProvider({ children }) {
 				setId,
 				roomName,
 				changeRoomName,
+				roomAuthor,
+				changeRoomAuthor,
 			}}
 		>
 			{children}

@@ -5,9 +5,15 @@ import GlobalContext from '../../GlobalContext'
 import { useEffect } from 'react'
 import styles from './RoomButton.module.css'
 
-const RoomButton = ({ room, room_id, setCurrentRoom }) => {
-	const { roomNumber, changeRoom, changeRoomName, roomName } =
-		useContext(GlobalContext)
+const RoomButton = ({ room, room_id, setCurrentRoom, room_author_id }) => {
+	const {
+		roomNumber,
+		changeRoom,
+		changeRoomName,
+		roomName,
+		userId,
+		changeRoomAuthor,
+	} = useContext(GlobalContext)
 
 	const [isActive, setIsActive] = useState(false)
 
@@ -19,10 +25,14 @@ const RoomButton = ({ room, room_id, setCurrentRoom }) => {
 
 	const roomHandler = () => {
 		socket.emit('leave_room', roomNumber)
-		setCurrentRoom(room_id)
 		changeRoom(room_id)
 		changeRoomName(room)
 		setIsActive(true)
+		if (room_author_id === userId) {
+			changeRoomAuthor(true)
+		} else {
+			changeRoomAuthor(false)
+		}
 	}
 	useEffect(() => {
 		socket.emit('join_room', roomNumber)

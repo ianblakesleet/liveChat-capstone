@@ -15,7 +15,7 @@ nav {
     margin: 0 auto;
 }
 .hidden{
-    display: none;
+    visibility: hidden;
 }
 .userWelcome{
     color: white;

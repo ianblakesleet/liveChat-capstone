@@ -16,13 +16,16 @@ h1{
     text-align: center;
 }
 
-
 .exitBtn{
-    width: 50px;
+    width: 40px;
     text-align: center;
     margin: 5px;
     cursor: pointer;
-
+     -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+     -o-transform: rotate(180deg); 
+    transform: rotate(180deg);
 }
 .chatHeader{
     display: flex;
