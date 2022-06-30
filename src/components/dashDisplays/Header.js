@@ -5,7 +5,9 @@ import Navbar from './Navbar'
 const Header = () => {
 	return (
 		<header>
-			<div className={styles.logo}>LOGO GOES HERE</div>
+			<div className={styles.logo}>
+				<img src="../../logo.png" alt="" />
+			</div>
 			<Navbar />
 		</header>
 	)

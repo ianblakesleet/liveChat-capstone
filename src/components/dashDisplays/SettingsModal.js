@@ -2,14 +2,29 @@ import React, { useContext, useState } from 'react'
 import GlobalContext from '../../GlobalContext'
 import axios from 'axios'
 import { AwesomeButtonProgress } from 'react-awesome-button'
+import { socket } from '../../webSocket'
 import styles from './SettingsModal.module.css'
 import 'react-awesome-button/dist/themes/theme-blue.css'
 
 const SettingsModal = ({ modal, setModal }) => {
-	const { roomName, roomNumber } = useContext(GlobalContext)
+	const {
+		roomName,
+		roomNumber,
+		changeRoomName,
+		changeRoom,
+		changeRoomAuthor,
+	} = useContext(GlobalContext)
 	const [input, setInput] = useState('')
-
 	const toggleModal = () => setModal(!modal)
+
+	const deleteRoomAxios = () => {
+		axios
+			.delete(`http://127.0.0.1:3001/api/rooms/${roomNumber}`)
+			.then((res) => {
+				console.log(res.data)
+			})
+	}
+
 	return (
 		<>
 			<img
@@ -42,6 +57,14 @@ const SettingsModal = ({ modal, setModal }) => {
 										console.log('delete!')
 										next()
 									}, 2000)
+									setTimeout(() => {
+										deleteRoomAxios()
+										socket.emit('leave_room', roomNumber)
+										toggleModal()
+										changeRoomName('')
+										changeRoom('')
+										changeRoomAuthor(false)
+									}, 1000)
 								}
 							}}
 						>

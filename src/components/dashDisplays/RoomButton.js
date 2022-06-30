@@ -24,7 +24,6 @@ const RoomButton = ({ room, room_id, setCurrentRoom, room_author_id }) => {
 	}, [roomName])
 
 	const roomHandler = () => {
-		socket.emit('leave_room', roomNumber)
 		changeRoom(room_id)
 		changeRoomName(room)
 		setIsActive(true)

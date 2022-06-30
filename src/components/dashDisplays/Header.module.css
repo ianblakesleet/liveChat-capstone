@@ -11,8 +11,8 @@ header {
     box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.15);
 }
 .logo{
-    text-align: center;
+    /* text-align: center; */
     height: 8vh;
+    width: 100%;
     border-radius: 15px;
-    background-color: #8ea8c3;
 }

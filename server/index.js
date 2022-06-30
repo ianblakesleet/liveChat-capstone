@@ -46,12 +46,14 @@ const {
 	getRooms,
 	postMessage,
 	getMessages,
+	deleteRoom,
 } = require('./controller')
 app.post('/api/users', addUser)
 app.post('/api/rooms', createRoom)
 app.get('/api/rooms', getRooms)
 app.get('/api/messages/:roomNumber', getMessages)
 app.post('/api/messages', postMessage)
+app.delete('/api/rooms/:roomNumber', deleteRoom)
 
 const PORT = SERVER_PORT || process.env.PORT
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`))

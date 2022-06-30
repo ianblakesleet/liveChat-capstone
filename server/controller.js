@@ -119,4 +119,10 @@ module.exports = {
 				console.log(dbRes[0])
 			})
 	},
+	deleteRoom: (req, res) => {
+		const { roomNumber } = req.params
+		sequelize.query(`
+		DELETE FROM rooms WHERE room_id = ${roomNumber}
+		`)
+	},
 }

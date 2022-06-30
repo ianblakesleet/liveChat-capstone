@@ -1,4 +1,5 @@
 import React, { useState, createContext } from 'react'
+import { socket } from './webSocket'
 
 const GlobalContext = createContext()
 
@@ -10,7 +11,10 @@ export function GlobalProvider({ children }) {
 	const [roomAuthor, setRoomAuthor] = useState(false)
 
 	const changeRoom = (num) => {
-		setRoomNumber(num)
+		if (num !== roomNumber) {
+			setRoomNumber(num)
+			socket.emit('leave_room', roomNumber)
+		}
 	}
 	const changeName = (str) => {
 		setUserName(str)
