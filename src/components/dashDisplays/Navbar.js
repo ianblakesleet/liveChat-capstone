@@ -31,6 +31,7 @@ const Navbar = () => {
 	}, [roomNumber])
 
 	let listDisplay = roomList.map((room, index) => {
+		console.log(room)
 		return (
 			<RoomButton
 				key={index}

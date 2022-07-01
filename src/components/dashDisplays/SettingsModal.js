@@ -5,6 +5,7 @@ import { AwesomeButtonProgress } from 'react-awesome-button'
 import { socket } from '../../webSocket'
 import styles from './SettingsModal.module.css'
 import 'react-awesome-button/dist/themes/theme-blue.css'
+import { useEffect } from 'react'
 
 const SettingsModal = ({ modal, setModal }) => {
 	const {
@@ -23,6 +24,14 @@ const SettingsModal = ({ modal, setModal }) => {
 			.then((res) => {
 				console.log(res.data)
 			})
+	}
+	const socketDeleteRoom = async () => {
+		let deleteRoomMess = {
+			room: roomNumber,
+			message: 'deleted',
+			id: 696969,
+		}
+		await socket.emit('send_message', deleteRoomMess)
 	}
 
 	return (
@@ -60,6 +69,7 @@ const SettingsModal = ({ modal, setModal }) => {
 									setTimeout(() => {
 										deleteRoomAxios()
 										socket.emit('leave_room', roomNumber)
+										socketDeleteRoom()
 										toggleModal()
 										changeRoomName('')
 										changeRoom('')

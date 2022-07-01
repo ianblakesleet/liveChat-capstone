@@ -10,7 +10,8 @@ import InputEmoji from 'react-input-emoji'
 const Chat = ({ username, room }) => {
 	const [currentMessage, setCurrentMessage] = useState('')
 	const [messageList, setMessageList] = useState([])
-	const { userId, roomNumber } = useContext(GlobalContext)
+	const { userId, roomNumber, changeRoom, changeRoomName } =
+		useContext(GlobalContext)
 
 	const submitHandler = (event) => {
 		// event.preventDefault()
@@ -61,8 +62,18 @@ const Chat = ({ username, room }) => {
 	}
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			setMessageList((prevMessageList) => [...prevMessageList, data])
-			console.log(data)
+			if (data.id !== 696969) {
+				setMessageList((prevMessageList) => [...prevMessageList, data])
+				console.log(data)
+			} else if (data.id === 696969) {
+				console.log(`recieved delete room message from other client`)
+				// console.log(data)
+				alert(
+					'Room creator has terminated room, all message logs will be deleted, and you will be exited out.'
+				)
+				changeRoomName('')
+				changeRoom('')
+			}
 		})
 	}, [socket])
 
@@ -80,8 +91,14 @@ const Chat = ({ username, room }) => {
 						: `${styles.other}`
 				}
 			>
-				<div>
-					<span className={styles.meta}>{mess.full_name}</span>
+				<div
+					className={
+						username === mess.full_name ? `${styles.you2}` : null
+					}
+				>
+					<span className={styles.meta}>
+						<b>{mess.full_name}</b>
+					</span>
 					<span className={styles.meta}>{mess.message_time}</span>
 				</div>
 				<div className={styles.message}>{mess.message}</div>
@@ -106,14 +123,6 @@ const Chat = ({ username, room }) => {
 				{dispMessages}
 			</ScrollToBottom>
 			<form className={styles.chatFooter}>
-				{/* <input
-					className={styles.chatInput}
-					type="text"
-					placeholder="send message..."
-					onChange={(e) => setCurrentMessage(e.target.value)}
-					value={currentMessage}
-				/>
-				<button>&#8593;&#8593;</button> */}
 				<InputEmoji
 					cleanOnEnter
 					borderColor="#7F8487"
