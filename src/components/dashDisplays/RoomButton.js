@@ -17,25 +17,22 @@ const RoomButton = ({ room, room_id, room_author_id }) => {
 
 	const [isActive, setIsActive] = useState(false)
 
-	useEffect(() => {
-		if (room !== roomName) {
-			setIsActive(false)
-		}
-	}, [roomName])
-
 	const roomHandler = () => {
 		changeRoom(room_id)
 		changeRoomName(room)
 		setIsActive(true)
-		// if (room_author_id === userId) {
-		// 	changeRoomAuthor(true)
-		// } else {
-		// 	changeRoomAuthor(false)
-		// }
 		room_author_id === userId
 			? changeRoomAuthor(true)
 			: changeRoomAuthor(false)
 	}
+	useEffect(() => {
+		if (room !== roomName) {
+			setIsActive(false)
+		} else {
+			setIsActive(true)
+		}
+	}, [roomName])
+
 	useEffect(() => {
 		socket.emit('join_room', roomNumber)
 	}, [roomNumber])

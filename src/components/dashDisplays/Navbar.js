@@ -8,17 +8,18 @@ import RoomButton from './RoomButton'
 import styles from './Navbar.module.css'
 import { useContext } from 'react'
 import GlobalContext from '../../GlobalContext'
+import { socket } from '../../webSocket'
 
 const Navbar = () => {
 	// const [currentRoom, setCurrentRoom] = useState('')
 	const [roomList, setRoomList] = useState([])
 	const [toggleRooms, setToggleRooms] = useState(true)
 	const { user } = useAuth0()
-	const { roomNumber } = useContext(GlobalContext)
+	const { roomNumber, changeRoomName, roomName } = useContext(GlobalContext)
 
 	const getAllRooms = () => {
 		axios.get('http://127.0.0.1:3001/api/rooms').then((res) => {
-			console.log(res.data)
+			// console.log(res.data)
 			setRoomList(res.data)
 		})
 	}
@@ -27,11 +28,26 @@ const Navbar = () => {
 	}, [])
 
 	useEffect(() => {
+		//when other client creates room or edits room name, will re-render new list
+		socket.on('receive_message', (data) => {
+			if (data.id === 999999) {
+				getAllRooms()
+				if (data.room === roomNumber) {
+					changeRoomName(data.newName)
+				}
+			}
+		})
+		//when other client deletes room
+		socket.on('receive_message', (data) => {
+			if (data.id === 888888) {
+				getAllRooms()
+			}
+		})
 		getAllRooms()
-	}, [roomNumber])
+	}, [roomNumber, socket, roomName])
 
 	let listDisplay = roomList.map((room, index) => {
-		console.log(room)
+		// console.log(room)
 		return (
 			<RoomButton
 				key={index}

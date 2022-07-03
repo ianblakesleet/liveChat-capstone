@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
+import { socket } from '../../webSocket'
 import GlobalContext from '../../GlobalContext'
 import styles from './CreateRoomModal.module.css'
 import { AwesomeButtonProgress } from 'react-awesome-button'
@@ -19,6 +20,13 @@ const CreateRoomModal = ({ getAllRooms }) => {
 		setAlreadyExists(false)
 	}
 
+	const createRoomSocket = async () => {
+		let reRenderRooms = {
+			id: 999999,
+			message: 'room created or room name changed',
+		}
+		await socket.emit('send_message', reRenderRooms)
+	}
 	const createRoom = () => {
 		const roomInfo = {
 			room: roomName,
@@ -74,6 +82,7 @@ const CreateRoomModal = ({ getAllRooms }) => {
 							action={(element, next) => {
 								if (roomName !== '') {
 									setTimeout(() => {
+										createRoomSocket()
 										createRoom()
 										next()
 									}, 2000)

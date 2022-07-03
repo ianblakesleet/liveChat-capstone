@@ -14,6 +14,7 @@ main {
 h1{
     color: #000033;
     text-align: center;
+    font-family: 'Quantico', sans-serif;
 }
 
 .exitBtn{

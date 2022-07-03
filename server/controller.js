@@ -78,7 +78,8 @@ module.exports = {
 		sequelize
 			.query(
 				`
-    SELECT * FROM rooms;
+    SELECT * FROM rooms
+	ORDER BY room_id;
     `
 			)
 			.then((dbRes) => {
@@ -121,8 +122,31 @@ module.exports = {
 	},
 	deleteRoom: (req, res) => {
 		const { roomNumber } = req.params
-		sequelize.query(`
+		sequelize
+			.query(
+				`
 		DELETE FROM rooms WHERE room_id = ${roomNumber}
-		`)
+		`
+			)
+			.then((dbRes) => {
+				res.status(200).send(dbRes[0])
+				console.log(dbRes[0])
+			})
+	},
+	updateRoomName: (req, res) => {
+		const { roomNumber } = req.params
+		const { name } = req.body
+		sequelize
+			.query(
+				`
+		UPDATE rooms
+		SET room_name = '${name}'
+		WHERE room_id = ${roomNumber};
+		`
+			)
+			.then((dbRes) => {
+				res.status(200).send(dbRes[0])
+				console.log(dbRes[0])
+			})
 	},
 }

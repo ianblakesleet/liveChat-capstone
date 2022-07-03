@@ -37,6 +37,13 @@ io.on('connection', (socket) => {
 	socket.on('send_message', (data) => {
 		console.log(data)
 		socket.to(data.room).emit('receive_message', data)
+		//this id is for room created -> to getALlRooms rerender on client
+		if (data.id === 999999) {
+			socket.broadcast.emit('receive_message', data)
+		}
+		if (data.id === 888888) {
+			socket.broadcast.emit('receive_message', data)
+		}
 	})
 })
 //------endpoints-------
@@ -47,6 +54,7 @@ const {
 	postMessage,
 	getMessages,
 	deleteRoom,
+	updateRoomName,
 } = require('./controller')
 app.post('/api/users', addUser)
 app.post('/api/rooms', createRoom)
@@ -54,6 +62,7 @@ app.get('/api/rooms', getRooms)
 app.get('/api/messages/:roomNumber', getMessages)
 app.post('/api/messages', postMessage)
 app.delete('/api/rooms/:roomNumber', deleteRoom)
+app.put('/api/rooms/:roomNumber', updateRoomName)
 
 const PORT = SERVER_PORT || process.env.PORT
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`))

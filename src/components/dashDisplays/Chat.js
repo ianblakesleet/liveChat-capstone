@@ -62,20 +62,38 @@ const Chat = ({ username, room }) => {
 	}
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			if (data.id !== 696969) {
-				setMessageList((prevMessageList) => [...prevMessageList, data])
+			if (data.id === 888888 && data.room === room) {
+				//when other client deletes room, AND you are in it
 				console.log(data)
-			} else if (data.id === 696969) {
 				console.log(`recieved delete room message from other client`)
 				// console.log(data)
+				changeRoomName('')
+				changeRoom('')
 				alert(
 					'Room creator has terminated room, all message logs will be deleted, and you will be exited out.'
 				)
-				changeRoomName('')
-				changeRoom('')
+			} else if (data.id !== 999999 && data.id !== 888888) {
+				setMessageList((prevMessageList) => [...prevMessageList, data])
+				console.log(data)
 			}
 		})
 	}, [socket])
+	// useEffect(() => {
+	// 	socket.on('receive_message', (data) => {
+	// 		if (data.id !== 696969) {
+	// 			setMessageList((prevMessageList) => [...prevMessageList, data])
+	// 			console.log(data)
+	// 		} else if (data.id === 696969) {
+	// 			console.log(`recieved delete room message from other client`)
+	// 			// console.log(data)
+	// 			alert(
+	// 				'Room creator has terminated room, all message logs will be deleted, and you will be exited out.'
+	// 			)
+	// 			changeRoomName('')
+	// 			changeRoom('')
+	// 		}
+	// 	})
+	// }, [socket])
 
 	useEffect(() => {
 		setMessageList([])
