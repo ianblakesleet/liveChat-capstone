@@ -13,8 +13,7 @@ const Chat = ({ username, room }) => {
 	const { userId, roomNumber, changeRoom, changeRoomName } =
 		useContext(GlobalContext)
 
-	const submitHandler = (event) => {
-		// event.preventDefault()
+	const submitHandler = () => {
 		sendMessage()
 		sendMessageToDb()
 	}
@@ -69,31 +68,12 @@ const Chat = ({ username, room }) => {
 				// console.log(data)
 				changeRoomName('')
 				changeRoom('')
-				alert(
-					'Room creator has terminated room, all message logs will be deleted, and you will be exited out.'
-				)
 			} else if (data.id !== 999999 && data.id !== 888888) {
 				setMessageList((prevMessageList) => [...prevMessageList, data])
 				console.log(data)
 			}
 		})
 	}, [socket])
-	// useEffect(() => {
-	// 	socket.on('receive_message', (data) => {
-	// 		if (data.id !== 696969) {
-	// 			setMessageList((prevMessageList) => [...prevMessageList, data])
-	// 			console.log(data)
-	// 		} else if (data.id === 696969) {
-	// 			console.log(`recieved delete room message from other client`)
-	// 			// console.log(data)
-	// 			alert(
-	// 				'Room creator has terminated room, all message logs will be deleted, and you will be exited out.'
-	// 			)
-	// 			changeRoomName('')
-	// 			changeRoom('')
-	// 		}
-	// 	})
-	// }, [socket])
 
 	useEffect(() => {
 		setMessageList([])

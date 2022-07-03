@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import { useAuth0 } from '@auth0/auth0-react'
@@ -6,12 +6,10 @@ import CreateRoomModal from './CreateRoomModal'
 import axios from 'axios'
 import RoomButton from './RoomButton'
 import styles from './Navbar.module.css'
-import { useContext } from 'react'
 import GlobalContext from '../../GlobalContext'
 import { socket } from '../../webSocket'
 
 const Navbar = () => {
-	// const [currentRoom, setCurrentRoom] = useState('')
 	const [roomList, setRoomList] = useState([])
 	const [toggleRooms, setToggleRooms] = useState(true)
 	const { user } = useAuth0()
@@ -44,7 +42,8 @@ const Navbar = () => {
 			}
 		})
 		getAllRooms()
-	}, [roomNumber, socket, roomName])
+	}, [socket, roomName, roomNumber])
+	//roomNumber
 
 	let listDisplay = roomList.map((room, index) => {
 		// console.log(room)
