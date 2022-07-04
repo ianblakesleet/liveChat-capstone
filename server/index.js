@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const app = express()
 const { SERVER_PORT } = process.env
 
@@ -16,7 +17,8 @@ app.use(express.static(path.resolve(__dirname, '../build')))
 const server = createServer(app)
 const io = new Server(server, {
 	cors: {
-		origin: 'http://localhost:3000',
+		// origin: 'http://localhost:3000',
+		origin: 'https://chatroom-capstone.herokuapp.com/',
 		methods: ['GET', 'POST'],
 	},
 })
