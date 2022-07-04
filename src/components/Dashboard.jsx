@@ -20,7 +20,8 @@ const Dashboard = () => {
       full_name: user.nickname
     }
     //end point has conditional to check for user first before posting... always returning user id
-    axios.post('http://127.0.0.1:3001/api/users', userInfo).then((res)=>{
+    // axios.post('http://127.0.0.1:3001/api/users', userInfo).then((res)=>{
+    axios.post('/api/users', userInfo).then((res)=>{
     // console.log(res.data.user_id)
     setId(res.data.user_id)
     }).catch(err=>[

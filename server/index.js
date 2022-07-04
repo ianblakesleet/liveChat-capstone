@@ -10,6 +10,8 @@ const { Server } = require('socket.io')
 
 app.use(cors())
 app.use(express.json())
+//****** */
+// app.use(express.static(path.resolve(__dirname, '../build')))
 
 const server = createServer(app)
 const io = new Server(server, {
@@ -63,6 +65,11 @@ app.get('/api/messages/:roomNumber', getMessages)
 app.post('/api/messages', postMessage)
 app.delete('/api/rooms/:roomNumber', deleteRoom)
 app.put('/api/rooms/:roomNumber', updateRoomName)
+
+//********** */
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, '../build', 'index.html'))
+})
 
 const PORT = SERVER_PORT || process.env.PORT
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`))

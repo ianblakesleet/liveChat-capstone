@@ -31,11 +31,9 @@ const Chat = ({ username, room }) => {
 					':' +
 					new Date(Date.now()).getMinutes(),
 			}
-			axios
-				.post(`http://localhost:3001/api/messages`, messageData)
-				.then((res) => {
-					// console.log(res.data)
-				})
+			axios.post(`/api/messages`, messageData).then((res) => {
+				// console.log(res.data)
+			})
 		}
 	}
 	const sendMessage = async () => {

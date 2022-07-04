@@ -19,15 +19,13 @@ const SettingsModal = ({ modal, setModal }) => {
 	const toggleModal = () => setModal(!modal)
 
 	const deleteRoomAxios = () => {
-		axios
-			.delete(`http://127.0.0.1:3001/api/rooms/${roomNumber}`)
-			.then((res) => {
-				console.log(res.data)
-			})
+		axios.delete(`/api/rooms/${roomNumber}`).then((res) => {
+			console.log(res.data)
+		})
 	}
 	const renameRoomAxios = () => {
 		axios
-			.put(`http://127.0.0.1:3001/api/rooms/${roomNumber}`, {
+			.put(`/api/rooms/${roomNumber}`, {
 				name: newNameInput,
 			})
 			.then((res) => {

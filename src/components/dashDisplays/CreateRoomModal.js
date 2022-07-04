@@ -34,7 +34,7 @@ const CreateRoomModal = ({ getAllRooms }) => {
 		}
 		if (roomName.length !== 0) {
 			axios
-				.post('http://127.0.0.1:3001/api/rooms', roomInfo)
+				.post('/api/rooms', roomInfo)
 				.then((res) => {
 					// console.log(res.data)
 					if (res.data === 'already exists') {

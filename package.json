@@ -1,6 +1,7 @@
 {
   "name": "capstone",
   "version": "0.1.0",
+  "main": "./server/index.js",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.10.1",
@@ -25,7 +26,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "go": "react-scripts start",
+    "start": "node ./server/index.js && npm build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

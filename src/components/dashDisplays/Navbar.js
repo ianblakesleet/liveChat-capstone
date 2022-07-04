@@ -16,7 +16,7 @@ const Navbar = () => {
 	const { roomNumber, changeRoomName, roomName } = useContext(GlobalContext)
 
 	const getAllRooms = () => {
-		axios.get('http://127.0.0.1:3001/api/rooms').then((res) => {
+		axios.get('/api/rooms').then((res) => {
 			// console.log(res.data)
 			setRoomList(res.data)
 		})
@@ -30,12 +30,13 @@ const Navbar = () => {
 		socket.on('receive_message', (data) => {
 			if (data.id === 999999) {
 				getAllRooms()
+				//this checks if you are currently in the room that name is chaning & updates it
 				if (data.room === roomNumber) {
 					changeRoomName(data.newName)
 				}
 			}
 		})
-		//when other client deletes room
+		//when other client deletes room, rerenders list
 		socket.on('receive_message', (data) => {
 			if (data.id === 888888) {
 				getAllRooms()
@@ -46,7 +47,6 @@ const Navbar = () => {
 	//roomNumber
 
 	let listDisplay = roomList.map((room, index) => {
-		// console.log(room)
 		return (
 			<RoomButton
 				key={index}
