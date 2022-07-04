@@ -11,7 +11,7 @@ const { Server } = require('socket.io')
 app.use(cors())
 app.use(express.json())
 //****** */
-// app.use(express.static(path.resolve(__dirname, '../build')))
+app.use(express.static(path.resolve(__dirname, '../build')))
 
 const server = createServer(app)
 const io = new Server(server, {
