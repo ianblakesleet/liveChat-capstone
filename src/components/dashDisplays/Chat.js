@@ -103,13 +103,11 @@ const Chat = ({ username, room }) => {
 	})
 	useEffect(() => {
 		if (roomNumber !== '') {
-			axios
-				.get(`http://localhost:3001/api/messages/${roomNumber}`)
-				.then((res) => {
-					// console.log(res.data)
+			axios.get(`/api/messages/${roomNumber}`).then((res) => {
+				// console.log(res.data)
 
-					setMessageList([...res.data])
-				})
+				setMessageList([...res.data])
+			})
 		}
 	}, [roomNumber])
 
