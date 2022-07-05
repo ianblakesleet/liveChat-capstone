@@ -69,6 +69,7 @@ const Navbar = () => {
 				getAllRooms()
 			}
 		})
+		getAllRooms()
 	}, [socket])
 
 	useEffect(() => {
