@@ -19,7 +19,7 @@ export function GlobalProvider({ children }) {
 
 	const changeRoom = (num) => {
 		//prevents leave room event if you double click room button
-		if (num !== roomNumber) {
+		if (num != roomNumber) {
 			setRoomNumber(num)
 			socket.emit('leave_room', roomNumber)
 		}
