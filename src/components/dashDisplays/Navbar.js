@@ -13,7 +13,8 @@ const Navbar = () => {
 	const [roomList, setRoomList] = useState([])
 	const [toggleRooms, setToggleRooms] = useState(true)
 	const { user } = useAuth0()
-	const { roomNumber, changeRoomName, roomName } = useContext(GlobalContext)
+	const { roomNumber, changeRoomName, roomName, reRenderCount } =
+		useContext(GlobalContext)
 
 	const getAllRooms = () => {
 		axios.get('/api/rooms').then((res) => {
