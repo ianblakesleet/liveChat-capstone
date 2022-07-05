@@ -56,6 +56,8 @@ const Navbar = () => {
 				if (data.room == roomNumber) {
 					changeRoomName(data.newName)
 					console.log('hit 2')
+				} else {
+					console.log('nah')
 				}
 				getAllRooms()
 			}
@@ -65,6 +67,8 @@ const Navbar = () => {
 					changeRoomName('')
 					changeRoom('')
 					console.log('hit4')
+				} else {
+					console.log('nah')
 				}
 				getAllRooms()
 			}
