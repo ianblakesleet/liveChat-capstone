@@ -89,6 +89,7 @@ const SettingsModal = ({ modal, setModal }) => {
 											changeRoomName(newNameInput)
 											renameRoomAxios()
 											socketRenameRoom()
+											addToCount()
 										}, 1000)
 									}
 								}}
