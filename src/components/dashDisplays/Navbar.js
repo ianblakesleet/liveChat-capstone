@@ -28,16 +28,18 @@ const Navbar = () => {
 
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
+			console.log(data)
 			if (data.id === 999999 && data.room === roomNumber) {
 				console.log('1st')
 				console.log('received renaming room from other client')
 				changeRoomName(data.newName)
+				getAllRooms()
 			} else if (data.id === 999999) {
 				console.log('2nd')
-				// getAllRooms()
+				getAllRooms()
 			} else if (data.id === 888888 && data.room === roomNumber) {
 				console.log('3rd')
-				// getAllRooms()
+				getAllRooms()
 				//when other client deletes room, AND you are in it
 				console.log(data)
 				console.log(`recieved delete room message from other client`)
@@ -46,11 +48,9 @@ const Navbar = () => {
 				changeRoom('')
 			} else if (data.id === 888888) {
 				console.log('4th')
-				// getAllRooms()
+				getAllRooms()
 			}
 		})
-		getAllRooms()
-		console.log('target effect')
 	}, [socket])
 
 	useEffect(() => {
