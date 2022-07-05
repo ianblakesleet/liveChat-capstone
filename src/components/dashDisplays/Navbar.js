@@ -30,13 +30,11 @@ const Navbar = () => {
 		getAllRooms()
 		//when other client creates room or edits room name, will re-render new list
 		socket.on('receive_message', (data) => {
-			if (data.id === 999999) {
+			if (data.id === 999999 && data.room === roomNumber) {
+				console.log('renaming room!')
+				changeRoomName(data.newName)
+			} else if (data.id === 999999) {
 				getAllRooms()
-				//this checks if you are currently in the room that name is changing & updates it
-				if (data.id === 999999 && data.room === roomNumber) {
-					console.log('renaming room!')
-					changeRoomName(data.newName)
-				}
 			} else if (data.id === 888888 && data.room === roomNumber) {
 				getAllRooms()
 				//when other client deletes room, AND you are in it
