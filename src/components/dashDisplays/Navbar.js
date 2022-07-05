@@ -36,14 +36,23 @@ const Navbar = () => {
 				if (data.room === roomNumber) {
 					changeRoomName(data.newName)
 				}
+			} else if (data.id === 888888) {
+				getAllRooms()
+			} else if (data.id === 888888 && data.room === room) {
+				//when other client deletes room, AND you are in it
+				console.log(data)
+				console.log(`recieved delete room message from other client`)
+				// console.log(data)
+				changeRoomName('')
+				changeRoom('')
 			}
 		})
 		//when other client deletes room, rerenders list
-		socket.on('receive_message', (data) => {
-			if (data.id === 888888) {
-				getAllRooms()
-			}
-		})
+		// socket.on('receive_message', (data) => {
+		// 	if (data.id === 888888) {
+		// 		getAllRooms()
+		// 	}
+		// })
 	}, [socket, roomName, roomNumber])
 
 	useEffect(() => {

@@ -59,14 +59,15 @@ const Chat = ({ username, room }) => {
 	}
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			if (data.id === 888888 && data.room === room) {
-				//when other client deletes room, AND you are in it
-				console.log(data)
-				console.log(`recieved delete room message from other client`)
-				// console.log(data)
-				changeRoomName('')
-				changeRoom('')
-			} else if (data.id !== 999999 && data.id !== 888888) {
+			// if (data.id === 888888 && data.room === room) {
+			// 	//when other client deletes room, AND you are in it
+			// 	console.log(data)
+			// 	console.log(`recieved delete room message from other client`)
+			// 	// console.log(data)
+			// 	changeRoomName('')
+			// 	changeRoom('')
+			// } else
+			if (data.id !== 999999 && data.id !== 888888) {
 				setMessageList((prevMessageList) => [...prevMessageList, data])
 				console.log(data)
 			}
