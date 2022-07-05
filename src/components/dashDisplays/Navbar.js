@@ -57,6 +57,8 @@ const Navbar = () => {
 					changeRoomName(data.newName)
 					console.log('hit 2')
 				} else {
+					console.log(`data.room is: ${data.room}`)
+					console.log(`roomNumber is : ${roomNumber}`)
 					console.log('nah')
 				}
 				getAllRooms()
@@ -68,12 +70,16 @@ const Navbar = () => {
 					changeRoom('')
 					console.log('hit4')
 				} else {
+					console.log(`data.room is: ${data.room}`)
+					console.log(`roomNumber is : ${roomNumber}`)
 					console.log('nah')
 				}
 				getAllRooms()
 			}
 		})
-		getAllRooms()
+		setTimeout(() => {
+			getAllRooms()
+		}, 1500)
 	}, [socket])
 
 	useEffect(() => {
