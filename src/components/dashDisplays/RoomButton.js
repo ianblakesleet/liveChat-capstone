@@ -32,7 +32,7 @@ const RoomButton = ({ room, room_id, room_author_id }) => {
 	}, [roomName])
 
 	useEffect(() => {
-		if (room_id === roomNumber) {
+		if (room_id == roomNumber) {
 			setIsActive(true)
 		}
 	}, [])
