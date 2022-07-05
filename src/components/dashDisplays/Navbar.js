@@ -33,7 +33,8 @@ const Navbar = () => {
 			if (data.id === 999999) {
 				getAllRooms()
 				//this checks if you are currently in the room that name is chaning & updates it
-				if (data.room === roomNumber) {
+				if (data.id === 999999 && data.room === roomNumber) {
+					console.log('renaming room!')
 					changeRoomName(data.newName)
 				}
 			} else if (data.id === 888888) {
