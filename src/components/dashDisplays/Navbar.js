@@ -38,7 +38,7 @@ const Navbar = () => {
 				}
 			} else if (data.id === 888888) {
 				getAllRooms()
-			} else if (data.id === 888888 && data.room === room) {
+			} else if (data.id === 888888 && data.room === roomNumber) {
 				//when other client deletes room, AND you are in it
 				console.log(data)
 				console.log(`recieved delete room message from other client`)
