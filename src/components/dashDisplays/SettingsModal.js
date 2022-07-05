@@ -14,6 +14,7 @@ const SettingsModal = ({ modal, setModal }) => {
 		changeRoom,
 		changeRoomAuthor,
 	} = useContext(GlobalContext)
+
 	const [input, setInput] = useState('')
 	const [newNameInput, setNewNameInput] = useState('')
 	const toggleModal = () => setModal(!modal)
@@ -29,7 +30,7 @@ const SettingsModal = ({ modal, setModal }) => {
 				name: newNameInput,
 			})
 			.then((res) => {
-				console.log(res.data)
+				// console.log(res.data)
 			})
 	}
 	const socketDeleteRoom = async () => {
@@ -79,7 +80,7 @@ const SettingsModal = ({ modal, setModal }) => {
 								action={(element, next) => {
 									if (newNameInput.length !== 0) {
 										setTimeout(() => {
-											console.log('renamed!')
+											// console.log('renamed!')
 											next()
 										}, 2000)
 										setTimeout(() => {
@@ -111,7 +112,6 @@ const SettingsModal = ({ modal, setModal }) => {
 							action={(element, next) => {
 								if (roomName === input) {
 									setTimeout(() => {
-										// console.log('delete!')
 										next()
 									}, 2000)
 									setTimeout(() => {
