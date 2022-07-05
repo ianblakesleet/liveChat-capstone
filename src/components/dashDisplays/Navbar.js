@@ -28,7 +28,7 @@ const Navbar = () => {
 
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			console.log(data)
+			console.log(String(data.room))
 			if (data.id === 999999 && String(data.room) === roomNumber) {
 				console.log('1st')
 				console.log('received renaming room from other client')
