@@ -11,10 +11,9 @@ export function GlobalProvider({ children }) {
 	const [roomAuthor, setRoomAuthor] = useState(false)
 
 	//when a user deletes THEIR room, for some reason the useEffect wouldnt fire on roomname and roomnumber change, adding this on state variable on delete seems to fire that useEffect. **
-	const [reRenderCount, setReRenderCount] = useState(0)
+	const [reRenderCount, setReRenderCount] = useState(true)
 	const addToCount = () => {
-		let prevCount = reRenderCount
-		setReRenderCount(prevCount + 1)
+		setReRenderCount(!reRenderCount)
 	}
 
 	const changeRoom = (num) => {
