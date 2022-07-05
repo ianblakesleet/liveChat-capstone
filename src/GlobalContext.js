@@ -14,6 +14,7 @@ export function GlobalProvider({ children }) {
 	const [reRenderCount, setReRenderCount] = useState(true)
 	const addToCount = () => {
 		setReRenderCount(!reRenderCount)
+		console.log('rerendercount GLOBAL')
 	}
 
 	const changeRoom = (num) => {
