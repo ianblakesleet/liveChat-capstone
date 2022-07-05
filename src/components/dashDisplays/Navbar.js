@@ -26,24 +26,46 @@ const Navbar = () => {
 		getAllRooms()
 	}, [])
 
+	// useEffect(() => {
+	// 	socket.on('receive_message', (data) => {
+	// 		console.log(data)
+	// 		if (data.room == roomNumber && data.id === 999999) {
+	// 			console.log('1st')
+	// 			// console.log('received renaming room from other client')
+	// 			changeRoomName(data.newName)
+	// 			getAllRooms()
+	// 		} else if (data.id === 999999) {
+	// 			console.log('2nd')
+	// 			getAllRooms()
+	// 		} else if (data.id === 888888 && data.room == roomNumber) {
+	// 			console.log('3rd')
+	// 			changeRoomName('')
+	// 			changeRoom('')
+	// 			getAllRooms()
+	// 		} else if (data.id === 888888) {
+	// 			console.log('4th')
+	// 			getAllRooms()
+	// 		}
+	// 	})
+	// }, [socket])
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
 			console.log(data)
-			if (data.room == roomNumber && data.id === 999999) {
-				console.log('1st')
-				// console.log('received renaming room from other client')
-				changeRoomName(data.newName)
+			if (data.id == 999999) {
+				console.log('hit1')
+				if (data.room == roomNumber) {
+					changeRoomName(data.newName)
+					console.log('hit 2')
+				}
 				getAllRooms()
-			} else if (data.id === 999999) {
-				console.log('2nd')
-				getAllRooms()
-			} else if (data.id === 888888 && data.room == roomNumber) {
-				console.log('3rd')
-				changeRoomName('')
-				changeRoom('')
-				getAllRooms()
-			} else if (data.id === 888888) {
-				console.log('4th')
+			}
+			if (data.id == 888888) {
+				console.log('hit3')
+				if (data.room == roomNumber) {
+					changeRoomName('')
+					changeRoom('')
+					console.log('hit4')
+				}
 				getAllRooms()
 			}
 		})
