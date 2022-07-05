@@ -31,9 +31,7 @@ const Chat = ({ username, room }) => {
 					':' +
 					new Date(Date.now()).getMinutes(),
 			}
-			axios.post(`/api/messages`, messageData).then((res) => {
-				// console.log(res.data)
-			})
+			axios.post(`/api/messages`, messageData).then((res) => {})
 		}
 	}
 	const sendMessage = async () => {
@@ -59,14 +57,6 @@ const Chat = ({ username, room }) => {
 	}
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			// if (data.id === 888888 && data.room === room) {
-			// 	//when other client deletes room, AND you are in it
-			// 	console.log(data)
-			// 	console.log(`recieved delete room message from other client`)
-			// 	// console.log(data)
-			// 	changeRoomName('')
-			// changeRoom('')
-			// } else
 			if (data.id !== 999999 && data.id !== 888888) {
 				setMessageList((prevMessageList) => [...prevMessageList, data])
 				console.log(data)
