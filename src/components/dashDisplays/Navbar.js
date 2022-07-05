@@ -27,7 +27,6 @@ const Navbar = () => {
 	}, [])
 
 	useEffect(() => {
-		getAllRooms()
 		//when other client creates room or edits room name, will re-render new list
 		socket.on('receive_message', (data) => {
 			if (data.id === 999999 && data.room === roomNumber) {
