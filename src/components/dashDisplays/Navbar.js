@@ -43,8 +43,11 @@ const Navbar = () => {
 				getAllRooms()
 			}
 		})
+	}, [socket])
+
+	useEffect(() => {
 		getAllRooms()
-	}, [socket, roomName, roomNumber, reRenderCount])
+	}, [reRenderCount, roomName, roomNumber])
 
 	let listDisplay = roomList.map((room, index) => {
 		return (
