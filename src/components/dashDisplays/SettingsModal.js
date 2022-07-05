@@ -20,7 +20,7 @@ const SettingsModal = ({ modal, setModal }) => {
 
 	const deleteRoomAxios = () => {
 		axios.delete(`/api/rooms/${roomNumber}`).then((res) => {
-			console.log(res.data)
+			// console.log(res.data)
 		})
 	}
 	const renameRoomAxios = () => {
@@ -111,7 +111,7 @@ const SettingsModal = ({ modal, setModal }) => {
 							action={(element, next) => {
 								if (roomName === input) {
 									setTimeout(() => {
-										console.log('delete!')
+										// console.log('delete!')
 										next()
 									}, 2000)
 									setTimeout(() => {
@@ -135,52 +135,6 @@ const SettingsModal = ({ modal, setModal }) => {
 					</div>
 				</div>
 			)}
-			{/* {modal && (
-				<div className={styles.modal2}>
-					<div
-						onClick={toggleModal}
-						className={styles.overlay2}
-					></div>
-					<div className={styles.modalContent2}>
-						<p>
-							This action will{' '}
-							<b>permanently destroy this room.</b>
-						</p>
-						<input
-							type="text"
-							onChange={(e) => setInput(e.target.value)}
-						/>
-						<AwesomeButtonProgress
-							type="primary"
-							size="small"
-							resultLabel="Deleted"
-							action={(element, next) => {
-								if (roomName === input) {
-									setTimeout(() => {
-										console.log('delete!')
-										next()
-									}, 2000)
-									setTimeout(() => {
-										deleteRoomAxios()
-										socket.emit('leave_room', roomNumber)
-										socketDeleteRoom()
-										toggleModal()
-										changeRoomName('')
-										changeRoom('')
-										changeRoomAuthor(false)
-									}, 1000)
-								}
-							}}
-						>
-							Delete
-						</AwesomeButtonProgress>
-						<p>
-							To confirm, please type the name of your room{' '}
-							<b>({roomName}).</b>
-						</p>
-					</div>
-				</div>
-			)} */}
 		</>
 	)
 }

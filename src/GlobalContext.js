@@ -28,7 +28,6 @@ export function GlobalProvider({ children }) {
 	const changeRoomAuthor = (boolean) => {
 		setRoomAuthor(boolean)
 	}
-	console.log(roomAuthor)
 
 	return (
 		<GlobalContext.Provider
