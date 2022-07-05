@@ -13,7 +13,7 @@ const Navbar = () => {
 	const [roomList, setRoomList] = useState([])
 	const [toggleRooms, setToggleRooms] = useState(true)
 	const { user } = useAuth0()
-	const { roomNumber, changeRoomName, roomName, reRenderCount } =
+	const { roomNumber, changeRoomName, roomName, reRenderCount, changeRoom } =
 		useContext(GlobalContext)
 
 	const getAllRooms = () => {

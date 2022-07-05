@@ -65,7 +65,7 @@ const Chat = ({ username, room }) => {
 			// 	console.log(`recieved delete room message from other client`)
 			// 	// console.log(data)
 			// 	changeRoomName('')
-			// 	changeRoom('')
+			// changeRoom('')
 			// } else
 			if (data.id !== 999999 && data.id !== 888888) {
 				setMessageList((prevMessageList) => [...prevMessageList, data])
