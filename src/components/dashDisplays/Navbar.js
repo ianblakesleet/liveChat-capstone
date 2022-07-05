@@ -43,7 +43,7 @@ const Navbar = () => {
 			}
 		})
 		getAllRooms()
-	}, [socket, roomName, roomNumber])
+	}, [socket, roomName, roomNumber, reRenderCount])
 
 	let listDisplay = roomList.map((room, index) => {
 		return (

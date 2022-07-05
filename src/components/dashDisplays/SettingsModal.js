@@ -13,6 +13,7 @@ const SettingsModal = ({ modal, setModal }) => {
 		changeRoomName,
 		changeRoom,
 		changeRoomAuthor,
+		addToCount,
 	} = useContext(GlobalContext)
 
 	const [input, setInput] = useState('')
@@ -122,6 +123,7 @@ const SettingsModal = ({ modal, setModal }) => {
 										changeRoomName('')
 										changeRoom('')
 										changeRoomAuthor(false)
+										addToCount()
 									}, 1000)
 								}
 							}}

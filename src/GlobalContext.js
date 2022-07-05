@@ -9,6 +9,7 @@ export function GlobalProvider({ children }) {
 	const [userId, setUserId] = useState()
 	const [roomName, setRoomName] = useState('')
 	const [roomAuthor, setRoomAuthor] = useState(false)
+	const [reRenderCount, setReRenderCount] = useState(0)
 
 	const changeRoom = (num) => {
 		//prevents leave room event if you double click room button
@@ -29,6 +30,9 @@ export function GlobalProvider({ children }) {
 	const changeRoomAuthor = (boolean) => {
 		setRoomAuthor(boolean)
 	}
+	const addToCount = () => {
+		setReRenderCount(reRenderCount + 1)
+	}
 
 	return (
 		<GlobalContext.Provider
@@ -43,6 +47,7 @@ export function GlobalProvider({ children }) {
 				changeRoomName,
 				roomAuthor,
 				changeRoomAuthor,
+				addToCount,
 			}}
 		>
 			{children}
