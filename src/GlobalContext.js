@@ -50,6 +50,7 @@ export function GlobalProvider({ children }) {
 				roomAuthor,
 				changeRoomAuthor,
 				addToCount,
+				reRenderCount,
 			}}
 		>
 			{children}
