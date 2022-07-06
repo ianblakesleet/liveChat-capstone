@@ -25,9 +25,12 @@ const Navbar = () => {
 	useEffect(() => {
 		getAllRooms()
 	}, [])
+
 	useEffect(() => {
+		console.log(`outside socket callback: ${roomNumber}`)
+
 		socket.on('receive_message', (data) => {
-			console.log(roomNumber)
+			console.log(`inside socket callback: ${roomNumber}`)
 			console.log(data)
 			if (data.id == 999999) {
 				console.log('hit1')
@@ -55,9 +58,7 @@ const Navbar = () => {
 				getAllRooms()
 			}
 		})
-		setTimeout(() => {
-			getAllRooms()
-		}, 1500)
+		getAllRooms()
 	}, [socket])
 
 	useEffect(() => {
