@@ -55,13 +55,13 @@ const Chat = ({ username, room }) => {
 			setCurrentMessage('')
 		}
 	}
-	console.log(`outside socket callback: ${roomNumber}`)
+	// console.log(`outside socket callback: ${roomNumber}`)
 
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
 			if (data.id !== 999999 && data.id !== 888888) {
 				setMessageList((prevMessageList) => [...prevMessageList, data])
-				console.log(data)
+				// console.log(data)
 			}
 		})
 	}, [socket])

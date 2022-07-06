@@ -28,7 +28,7 @@ const Navbar = () => {
 
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			console.log(`inside socket callback: ${roomNumber}`)
+			// console.log(`inside socket callback: ${roomNumber}`)
 			console.log(data)
 			if (data.id == 999999) {
 				console.log('hit1')
@@ -61,10 +61,10 @@ const Navbar = () => {
 
 	useEffect(() => {
 		getAllRooms()
-		console.log('getALLROOMS NAVBAR')
+		// console.log('getALLROOMS NAVBAR')
 	}, [reRenderCount, roomName, roomNumber])
 
-	console.log(`current roomNumber is: ${roomNumber}`)
+	// console.log(`current roomNumber is: ${roomNumber}`)
 
 	let listDisplay = roomList.map((room, index) => {
 		return (
