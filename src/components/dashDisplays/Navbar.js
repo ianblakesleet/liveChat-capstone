@@ -65,6 +65,8 @@ const Navbar = () => {
 		console.log('getALLROOMS NAVBAR')
 	}, [reRenderCount, roomName, roomNumber])
 
+	console.log(`current roomNumber is: ${roomNumber}`)
+
 	let listDisplay = roomList.map((room, index) => {
 		return (
 			<RoomButton

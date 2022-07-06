@@ -35,7 +35,6 @@ const RoomButton = ({ room, room_id, room_author_id }) => {
 		if (room_id == roomNumber) {
 			setIsActive(true)
 		}
-		console.log('*roombutton*')
 	})
 
 	useEffect(() => {
@@ -47,7 +46,6 @@ const RoomButton = ({ room, room_id, room_author_id }) => {
 				className={isActive ? `${styles.active}` : `${styles.roomBtn}`}
 				onClick={roomHandler}
 			>
-				{/* {room} */}
 				{room_author_id === userId ? `${room}  👑` : `${room}`}
 			</button>
 		</li>
