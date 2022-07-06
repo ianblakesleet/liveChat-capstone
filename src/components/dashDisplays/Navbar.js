@@ -27,6 +27,7 @@ const Navbar = () => {
 	}, [])
 
 	console.log(`outside socket callback: ${roomNumber}`)
+
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
 			console.log(`inside socket callback: ${roomNumber}`)
