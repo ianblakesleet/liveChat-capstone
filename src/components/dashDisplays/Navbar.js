@@ -57,11 +57,12 @@ const Navbar = () => {
 			}
 		})
 		getAllRooms()
+		console.log('hit')
 	}, [socket, roomNumber])
 
 	useEffect(() => {
 		getAllRooms()
-		// console.log('getALLROOMS NAVBAR')
+		console.log('getALLROOMS NAVBAR')
 	}, [reRenderCount, roomName, roomNumber])
 
 	// console.log(`current roomNumber is: ${roomNumber}`)
