@@ -59,7 +59,7 @@ const Navbar = () => {
 		setTimeout(() => {
 			getAllRooms()
 			console.log('getALLROOMS NAVBAR')
-		}, 300)
+		}, 150)
 	}, [reRenderCount, roomName, roomNumber])
 
 	let listDisplay = roomList.map((room, index) => {
