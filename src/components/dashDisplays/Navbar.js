@@ -28,17 +28,14 @@ const Navbar = () => {
 
 	useEffect(() => {
 		socket.on('receive_message', (data) => {
-			// console.log(`inside socket callback: ${roomNumber}`)
 			console.log(data)
 			if (data.id == 999999) {
 				console.log('hit1')
 				if (data.room == roomNumber) {
 					changeRoomName(data.newName)
-					console.log('hit 2')
 				} else {
 					console.log(`data.room is: ${data.room}`)
 					console.log(`roomNumber is : ${roomNumber}`)
-					console.log('nah')
 				}
 				getAllRooms()
 			}
@@ -47,11 +44,9 @@ const Navbar = () => {
 				if (data.room == roomNumber) {
 					changeRoomName('')
 					changeRoom('')
-					console.log('hit4')
 				} else {
 					console.log(`data.room is: ${data.room}`)
 					console.log(`roomNumber is : ${roomNumber}`)
-					console.log('nah')
 				}
 				getAllRooms()
 			}
@@ -64,12 +59,8 @@ const Navbar = () => {
 		setTimeout(() => {
 			getAllRooms()
 			console.log('getALLROOMS NAVBAR')
-		}, 1000)
-		// getAllRooms()
-		// console.log('getALLROOMS NAVBAR')
+		}, 500)
 	}, [reRenderCount, roomName, roomNumber])
-
-	// console.log(`current roomNumber is: ${roomNumber}`)
 
 	let listDisplay = roomList.map((room, index) => {
 		return (
