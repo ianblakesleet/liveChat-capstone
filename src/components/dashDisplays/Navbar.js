@@ -64,7 +64,7 @@ const Navbar = () => {
 		setTimeout(() => {
 			getAllRooms()
 			console.log('getALLROOMS NAVBAR')
-		}, 1500)
+		}, 1000)
 		// getAllRooms()
 		// console.log('getALLROOMS NAVBAR')
 	}, [reRenderCount, roomName, roomNumber])
